@@ -76,13 +76,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArduinoCircuit.h" />
     <ClInclude Include="EncoderPositioner.h" />
     <ClInclude Include="Positioner.h" />
+    <ClInclude Include="PushButton.h" />
     <ClInclude Include="__vm\.ArduinoFocuser.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArduinoCircuit.cpp" />
     <ClCompile Include="EncoderPositioner.cpp" />
     <ClCompile Include="Positioner.cpp" />
+    <ClCompile Include="PushButton.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

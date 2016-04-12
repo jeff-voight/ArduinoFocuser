@@ -9,7 +9,7 @@
 	#include "WProgram.h"
 #endif
 
-class Positioner {
+class Positioner: public ArduinoCircuit {
 public:
 	Positioner();
 	virtual ~Positioner();

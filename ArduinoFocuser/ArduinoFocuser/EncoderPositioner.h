@@ -18,6 +18,7 @@ public:
 	EncoderPositioner(char _pinA, char _pinB);
 	~EncoderPositioner() override;
 	void increment(long _change) override;
+	void refresh() override;
 
 private:
 	char pinA = 0, pinB = 0;

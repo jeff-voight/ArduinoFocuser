@@ -62,6 +62,9 @@ void EncoderPositioner::increment(long _change)
 	}
 }
 
+void EncoderPositioner::refresh() {
+
+}
 
 void EncoderPositioner::interruptA()
 {

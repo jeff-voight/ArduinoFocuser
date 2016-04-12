@@ -27,12 +27,24 @@
     <ClInclude Include="EncoderPositioner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PushButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArduinoCircuit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Positioner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EncoderPositioner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PushButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArduinoCircuit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

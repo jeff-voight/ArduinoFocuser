@@ -5,6 +5,8 @@
 */
 
 // the setup function runs once when you press reset or power the board
+#include "ArduinoCircuit.h"
+#include "PushButton.h"
 #include "EncoderPositioner.h"
 #include "Positioner.h"
 void setup() {
