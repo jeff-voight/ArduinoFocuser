@@ -8,11 +8,12 @@
 #else
 	#include "WProgram.h"
 #endif
+#include "ArduinoCircuit.h"
 
 class Positioner: public ArduinoCircuit {
 public:
 	Positioner();
-	virtual ~Positioner();
+	~Positioner();
 	void setPosition(long _position);
 	long getPosition();
 	void moveAbsolute(long _position);
@@ -23,12 +24,14 @@ public:
 	void setHighLimit(long _highLimit);
 	long getLowLimit();
 	long getHighLimit();
+	virtual void refresh() ;
 
 protected:
 	long position, change;
 	boolean absolute = false;
 	virtual void addChange(long _change);
-	long lowLimit = -2147483648, highLimit= 2147483647;
+	long lowLimit = -13500, // 5 turns of a 200*27 step motor
+		highLimit = 13500; 
 	long limitThreshold = 100;
 };
 

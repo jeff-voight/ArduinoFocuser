@@ -9,15 +9,26 @@
 	#include "WProgram.h"
 #endif
 
+#include "ArduinoCircuit.h"
+
 class PushButton : public ArduinoCircuit {
 public:
 	PushButton();
-	PushButton(char _buttonPin, char _LEDPin);
-	~PushButton() override;
-	void refresh() override;
+	PushButton(uint8_t _buttonPin, uint8_t _LEDPin);
+	~PushButton();
+	virtual void refresh();
+	bool isPushed();
+	bool isHeld();
+	bool debounce();
+	void setLED(bool _state);
 
 private:
-	char buttonPin = 0, LEDPin = 0;
+	uint8_t buttonPin = 0, LEDPin = 0;
+	bool pushed = false, held=false, lit=false, blink=false;
+	long lastButtonPushTime = 0;
+	int heldThreshold = 2 * 1000; // 2 Seconds
+	int debounceTime = 50; // 50 milliseconds
+	int defaultBrightness = 128;
 };
 
 #endif

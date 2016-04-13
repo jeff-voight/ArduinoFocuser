@@ -64,8 +64,16 @@ extern "C" void __cxa_pure_virtual() {;}
 #define portInputRegister(P)
 #define portModeRegister(P)
 #include <..\ArduinoFocuser\ArduinoFocuser.ino>
+#include <..\ArduinoFocuser\ArduinoCircuit.cpp>
+#include <..\ArduinoFocuser\ArduinoCircuit.h>
 #include <..\ArduinoFocuser\EncoderPositioner.cpp>
 #include <..\ArduinoFocuser\EncoderPositioner.h>
+#include <..\ArduinoFocuser\LCDDisplay.cpp>
+#include <..\ArduinoFocuser\LCDDisplay.h>
 #include <..\ArduinoFocuser\Positioner.cpp>
 #include <..\ArduinoFocuser\Positioner.h>
+#include <..\ArduinoFocuser\PushButton.cpp>
+#include <..\ArduinoFocuser\PushButton.h>
+#include <..\ArduinoFocuser\TemperatureSensor.cpp>
+#include <..\ArduinoFocuser\TemperatureSensor.h>
 #endif

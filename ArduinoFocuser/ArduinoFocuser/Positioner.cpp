@@ -66,7 +66,12 @@ long Positioner::getHighLimit()
 	return highLimit;
 }
 
+void Positioner::refresh() {
+
+}
+
 void Positioner::addChange(long _change) {
+	Serial.print("Change: "); Serial.println(_change);
 	change += _change;
 	if (position + change < lowLimit) {
 		change = lowLimit - position;
