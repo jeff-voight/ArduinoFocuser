@@ -41,6 +41,11 @@ void Positioner::increment(long _change)
 	moveRelative(_change);
 }
 
+long Positioner::getChange()
+{
+	return change;
+}
+
 void Positioner::setLimitThreshold(long _limitThreshold)
 {
 	limitThreshold = _limitThreshold;
@@ -65,13 +70,16 @@ long Positioner::getHighLimit()
 {
 	return highLimit;
 }
+void Positioner::adjustMoved(long _moved) {
+	change -= _moved;
+	position += _moved;
+}
 
 void Positioner::refresh() {
 
 }
 
 void Positioner::addChange(long _change) {
-	Serial.print("Change: "); Serial.println(_change);
 	change += _change;
 	if (position + change < lowLimit) {
 		change = lowLimit - position;

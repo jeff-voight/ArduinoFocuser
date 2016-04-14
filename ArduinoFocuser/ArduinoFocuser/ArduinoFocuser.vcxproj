@@ -84,6 +84,7 @@
     <ClInclude Include="LCDDisplay.h" />
     <ClInclude Include="Positioner.h" />
     <ClInclude Include="PushButton.h" />
+    <ClInclude Include="StepperMotor.h" />
     <ClInclude Include="TemperatureSensor.h" />
     <ClInclude Include="__vm\.ArduinoFocuser.vsarduino.h" />
   </ItemGroup>
@@ -93,6 +94,7 @@
     <ClCompile Include="LCDDisplay.cpp" />
     <ClCompile Include="Positioner.cpp" />
     <ClCompile Include="PushButton.cpp" />
+    <ClCompile Include="StepperMotor.cpp" />
     <ClCompile Include="TemperatureSensor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

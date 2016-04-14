@@ -63,12 +63,12 @@ void EncoderPositioner::increment(long _change)
 }
 
 void EncoderPositioner::refresh() {
-	if (position - limitThreshold < highLimit) {
+	if (highLimit-limitThreshold < position) {
 		highLimitButton.setLED(true);
 	} else {
 		highLimitButton.setLED(false);
 	}
-	if (position + limitThreshold > lowLimit) {
+	if (lowLimit+limitThreshold > position) {
 		lowLimitButton.setLED(true);
 	} else {
 		lowLimitButton.setLED(false);

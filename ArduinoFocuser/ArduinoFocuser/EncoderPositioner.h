@@ -31,7 +31,7 @@ private:
 	volatile long lastMicros = micros();
 	long debouncingTime = 15;
 	PushButton resetButton, lowLimitButton, highLimitButton, turboButton;
-	int turboMultiplier = 10;
+	int turboMultiplier = 50;
 };
 
 #endif

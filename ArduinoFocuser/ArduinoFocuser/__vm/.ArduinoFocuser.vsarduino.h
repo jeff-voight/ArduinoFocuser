@@ -74,6 +74,8 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <..\ArduinoFocuser\Positioner.h>
 #include <..\ArduinoFocuser\PushButton.cpp>
 #include <..\ArduinoFocuser\PushButton.h>
+#include <..\ArduinoFocuser\StepperMotor.cpp>
+#include <..\ArduinoFocuser\StepperMotor.h>
 #include <..\ArduinoFocuser\TemperatureSensor.cpp>
 #include <..\ArduinoFocuser\TemperatureSensor.h>
 #endif
