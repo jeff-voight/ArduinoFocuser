@@ -27,14 +27,20 @@ public:
 	long getHighLimit();
 	void adjustMoved(long _moved);
 	virtual void refresh() ;
+	double getStepSize();
+	virtual void halt();
 
 protected:
 	volatile long position, change;
 	boolean absolute = false;
 	virtual void addChange(long _change);
-	long lowLimit = -13500, // 5 turns of a 200*27 step motor
-		highLimit = 13500; 
-	long limitThreshold = 500;
+	double maxTravelTurns = 5.75;
+	long stepsPerRevolution = 5400*2; // halfstepping
+	double travelDistancePerTurn = 23.82;
+	double stepSize = travelDistancePerTurn / stepsPerRevolution;
+	long lowLimit = -1 * (stepsPerRevolution*maxTravelTurns / 2), // 5 turns of a 200*27 step motor
+		highLimit = stepsPerRevolution*maxTravelTurns / 2;
+	long limitThreshold = .5*stepsPerRevolution;
 };
 
 #endif

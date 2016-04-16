@@ -79,6 +79,15 @@ void Positioner::refresh() {
 
 }
 
+double Positioner::getStepSize()
+{
+	return stepSize;
+}
+
+void Positioner::halt() {
+	change = 0;
+}
+
 void Positioner::addChange(long _change) {
 	change += _change;
 	if (position + change < lowLimit) {

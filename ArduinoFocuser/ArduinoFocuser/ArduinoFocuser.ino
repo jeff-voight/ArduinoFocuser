@@ -33,7 +33,7 @@ StepperMotor stepperMotor;
 uint8_t rstPin = 12, stepPin = 10, dirPin = 11, stepSizePin = 13;
 
 void setup() {
-
+	Serial.begin(115200);
 	reset = PushButton(resetButtonPin, resetLEDPin);
 	lowLimit = PushButton(lowLimitButtonPin, lowLimitLEDPin);
 	highLimit = PushButton(highLimitButtonPin, highLimitLEDPin);
@@ -49,9 +49,13 @@ void setup() {
 
 // the loop function runs over and over again until power down or reset
 void loop() {
+	//Serial.print(".");
 	encoderPositioner.refresh();
+	//Serial.print(",");
 	temperatureSensor.refresh();
+	//Serial.print(";");
 	lcd.refresh();
+	//Serial.print(":");
 	stepperMotor.refresh();
 }
 

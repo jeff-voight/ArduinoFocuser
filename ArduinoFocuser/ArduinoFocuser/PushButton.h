@@ -26,7 +26,7 @@ private:
 	uint8_t buttonPin = 0, LEDPin = 0;
 	bool pushed = false, held=false, lit=false, blink=false;
 	long lastButtonPushTime = 0;
-	int heldThreshold = 2 * 1000; // 2 Seconds
+	int heldThreshold = 1 * 1000; // 2 Seconds
 	int debounceTime = 50; // 50 milliseconds
 	int defaultBrightness = 128;
 };
