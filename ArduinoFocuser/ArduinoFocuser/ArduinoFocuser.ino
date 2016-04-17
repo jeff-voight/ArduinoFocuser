@@ -30,7 +30,7 @@ uint8_t lcdSdl = 2, lcdSda = 1;
 LCDDisplay lcd;
 uint8_t lcdAddr = 0x27;
 StepperMotor stepperMotor;
-uint8_t rstPin = 12, stepPin = 10, dirPin = 11, stepSizePin = 13;
+uint8_t rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
 
 void setup() {
 	Serial.begin(115200);

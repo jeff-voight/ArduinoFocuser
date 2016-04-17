@@ -34,6 +34,7 @@ void StepperMotor::refresh()
 		moving = false;
 	}
 	long moved = getSteps(); // How many steps did we take last cycle?
+	//Serial.print("We moved "); Serial.print(moved); Serial.println(" steps in the last cycle.");
 	positioner->adjustMoved(moved); // update the positioner so it can display it
 	
 	long steps=step(); // Tell the motor whether to move, move slow, or stop
