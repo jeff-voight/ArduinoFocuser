@@ -23,7 +23,7 @@ public:
 private:
 	uint16_t stepsPerRevolution = 5400, processorStepsPerSecond = 490;
 	double stepsPerMS = 0.0 + processorStepsPerSecond / 1000.0;
-	uint8_t slowStepsThreshold = 500;
+	long slowStepsThreshold = 500;
 	uint8_t rstPin, stepPin, dirPin, stepSizePin;
 	Positioner* positioner;
 	long change;

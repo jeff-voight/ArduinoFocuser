@@ -82,7 +82,7 @@ void EncoderPositioner::refresh() {
 	lowLimitButton.refresh();
 	highLimitButton.refresh();
 	turboButton.refresh();
-	if (resetButton.isPushed() && turboButton.isPushed()) {
+	if (resetButton.isPushed()) {// && turboButton.isPushed()) {
 		Serial.println("HALT!");
 		halt();
 	}

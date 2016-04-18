@@ -71,7 +71,7 @@ void loop() {
 			Serial.println((stepperMotor.isMoving() ? "TRUE#" : "FALSE#"));
 		} else if (cmd == temperature) {
 			int temp = temperatureSensor.getTemperature();
-			Serial.print(temperature); Serial.println("#");
+			Serial.print(temp); Serial.println("#");
 		} else if (cmd == halt) {
 			encoderPositioner.halt();
 			Serial.print(encoderPositioner.getPosition()); Serial.println("#");
