@@ -31,7 +31,8 @@ LCDDisplay lcd;
 uint8_t lcdAddr = 0x27;
 StepperMotor stepperMotor;
 uint8_t rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
-String halt = "HALT", move = "MOVE", isMoving = "MOVING", absolute = "ABSOLUTE", position = "POSITION", temperature="TEMPERATURE"; // ASCOM commands
+String halt = "HALT", move = "MOVE", isMoving = "MOVING", absolute = "ABSOLUTE",
+	position = "POSITION", temperature="TEMPERATURE", disconnect="DISCONNECT"; // ASCOM commands
 char commandDelimiter = '#';
 
 void setup() {
@@ -75,6 +76,9 @@ void loop() {
 		} else if (cmd == halt) {
 			encoderPositioner.halt();
 			Serial.print(encoderPositioner.getPosition()); Serial.println("#");
+		} else if (cmd == disconnect) {
+			stepperMotor.disconnect();
+			Serial.println("DISCONNECTED#");
 		}
 				
 	}

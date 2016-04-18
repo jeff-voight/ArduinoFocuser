@@ -19,6 +19,7 @@ public:
 	~StepperMotor();
 	void refresh();
 	bool isMoving();
+	bool disconnect();
 
 private:
 	uint16_t stepsPerRevolution = 5400, processorStepsPerSecond = 490;
