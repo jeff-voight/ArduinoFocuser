@@ -31,6 +31,8 @@ LCDDisplay lcd;
 uint8_t lcdAddr = 0x27;
 StepperMotor stepperMotor;
 uint8_t rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
+String halt = "HALT", move = "MOVE", isMoving = "MOVING", absolute = "ABSOLUTE", position = "POSITION", temperature="TEMPERATURE"; // ASCOM commands
+char commandDelimiter = '#';
 
 void setup() {
 	Serial.begin(115200);
@@ -49,13 +51,36 @@ void setup() {
 
 // the loop function runs over and over again until power down or reset
 void loop() {
-	//Serial.print(".");
+	String cmdString, cmd, param;
+	if (Serial.available() > 0) {
+		cmdString = Serial.readStringUntil(commandDelimiter);
+		int separatorPosition = cmdString.indexOf(":");
+		if (separatorPosition != -1) {
+			cmd = cmdString.substring(0, separatorPosition);
+			param = cmdString.substring(separatorPosition+1);
+			//Serial.print("CMD: "); Serial.print(cmd); Serial.print(" Param: "); Serial.println(param);
+		} else {
+			cmd = cmdString;
+		}
+		if (cmd == move) {
+			encoderPositioner.moveRelative(param.toInt());
+			Serial.print(encoderPositioner.getPosition()); Serial.println("#");
+		} else if (cmd == position) {
+			Serial.print(encoderPositioner.getPosition()); Serial.println("#");
+		} else if (cmd == isMoving) {
+			Serial.println((stepperMotor.isMoving() ? "TRUE#" : "FALSE#"));
+		} else if (cmd == temperature) {
+			int temp = temperatureSensor.getTemperature();
+			Serial.print(temperature); Serial.println("#");
+		} else if (cmd == halt) {
+			encoderPositioner.halt();
+			Serial.print(encoderPositioner.getPosition()); Serial.println("#");
+		}
+				
+	}
 	encoderPositioner.refresh();
-	//Serial.print(",");
 	temperatureSensor.refresh();
-	//Serial.print(";");
 	lcd.refresh();
-	//Serial.print(":");
 	stepperMotor.refresh();
 }
 

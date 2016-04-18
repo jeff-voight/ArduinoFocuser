@@ -222,7 +222,7 @@ namespace ASCOM.VoightFocuser
                     connectedState = true;
                     LogMessage("Connected Set", "Connecting to port {0}", comPort);
                     objSerial = new ASCOM.Utilities.Serial();
-                    objSerial.Port = int.Parse(comPort);
+                    objSerial.Port = int.Parse(comPort.Substring(3));
 
                     objSerial.Speed = ASCOM.Utilities.SerialSpeed.ps115200;
                     objSerial.Connected = true;

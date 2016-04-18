@@ -41,6 +41,11 @@ void StepperMotor::refresh()
 	positioner->adjustMoved(steps); // if slow stepping, this tells us how many steps cycled
 }
 
+bool StepperMotor::isMoving()
+{
+	return moving;
+}
+
 long StepperMotor::getSteps() {
 	int multiplier = 2; // 2 because these are whole steps as opposed to half steps near the ends of the travel
 	if (!moving||abs(change)<slowStepsThreshold) {
@@ -62,6 +67,7 @@ long StepperMotor::step()
 	if (change == 0) {
 		digitalWrite(stepPin, 0); // halt if something needs it.
 		moving = false;
+		return 0;
 	}
 	if (change > 0) {
 		digitalWrite(dirPin, HIGH);
@@ -72,18 +78,22 @@ long StepperMotor::step()
 	}
 	//Serial.print("Steps remaining: "); Serial.println(stepsRemaining);
 	if (stepsRemaining < slowStepsThreshold) {
-		
-		int lesserVal = (stepsRemaining < 10?stepsRemaining:10);
-		analogWrite(stepPin, 0); // Stop the motor if it's moving
-		digitalWrite(stepSizePin, HIGH); // Go halfstep for final adjustment. Probably just for show.
-		for (int i = 0; i < lesserVal && change!=0; i++) {
-			digitalWrite(stepPin, HIGH);
-			delay(1);
-			digitalWrite(stepPin, LOW);
-			delay(1);
-		}
+		digitalWrite(stepSizePin, HIGH); // Halfstep mode
+		long timeRemaining = stepsRemaining*2 / stepsPerMS;
+		analogWrite(stepPin, 127);
+		delay(timeRemaining);
+		digitalWrite(stepPin, 0);
+		//int lesserVal = (stepsRemaining < 10?stepsRemaining:10);
+		//analogWrite(stepPin, 0); // Stop the motor if it's moving
+		//digitalWrite(stepSizePin, HIGH); // Go halfstep for final adjustment. Probably just for show.
+		//for (int i = 0; i < lesserVal && change!=0; i++) {
+		//	digitalWrite(stepPin, HIGH);
+		//	delay(1);
+		//	digitalWrite(stepPin, LOW);
+		//	delay(1);
+		//}
 		moving = false;
-		return lesserVal*dirMultiplier;
+		return stepsRemaining*dirMultiplier;
 	} else {
 		digitalWrite(stepSizePin, LOW);
 		ms = millis();

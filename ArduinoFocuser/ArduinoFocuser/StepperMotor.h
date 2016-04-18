@@ -18,6 +18,7 @@ public:
 	StepperMotor(uint8_t _rstPin, uint8_t _stepPin, uint8_t _dirPin, uint8_t _stepSizePin, Positioner* _positioner);
 	~StepperMotor();
 	void refresh();
+	bool isMoving();
 
 private:
 	uint16_t stepsPerRevolution = 5400, processorStepsPerSecond = 490;
