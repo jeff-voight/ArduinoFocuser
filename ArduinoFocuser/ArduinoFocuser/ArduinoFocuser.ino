@@ -6,12 +6,10 @@
 
 // the setup function runs once when you press reset or power the board
 
-#include "StepperMotor.h"
-#include <Wire.h>
 
+
+#include "StepperMotor.h"
 #include <LiquidCrystal_I2C.h>
-#include <LiquidCrystal.h>
-#include <LCD.h>
 #include "LCDDisplay.h"
 #include "TemperatureSensor.h"
 #include "ArduinoCircuit.h"

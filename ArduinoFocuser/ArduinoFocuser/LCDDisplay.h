@@ -9,8 +9,7 @@
 	#include "WProgram.h"
 #endif
 
-#include <LCD.h>
-#include <Wire.h>
+
 #include <LiquidCrystal_I2C.h>
 #include "ArduinoCircuit.h"
 #include "TemperatureSensor.h"
@@ -37,10 +36,11 @@ private:
 	String padInt(int _theInt, uint8_t _size);
 	String padDouble(double _theDouble, uint8_t _size);
 	String spaces = "                    "; // 20 so far
-	String tempLabel = "Temp:", humiLabel = "Humi:", dewLabel = "Dew:",
-		posLabel = "Pos:", chgLabel = "Chg:", spdLabel = "Spd:", warnLabel = "Warn:";
 	String lowLimitWarnMessage = "Low warning", lowLimitMessage = "Low limit", highLimitWarnMessage = "High warning",
-		highLimitMessage = "High limit", dewWarning = "Dew Point", noWarning="No warnings";
+		highLimitMessage = "High limit", dewWarning = "Dew Point", noWarning = "No warnings";
+	String tempLabel = "TEMP", humiLabel = "HUMI", dewLabel = "DEW",
+		posLabel = "POS", chgLabel = "CHG", spdLabel = "SPD", warnLabel = "WARN";
+	
 	String currentWarning = noWarning;
 };
 

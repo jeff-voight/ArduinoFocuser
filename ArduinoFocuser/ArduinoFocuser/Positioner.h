@@ -31,8 +31,9 @@ public:
 	virtual void halt();
 
 protected:
-	volatile long position, change;
-	boolean absolute = false;
+	volatile int32_t position;
+	volatile long change;
+	bool absolute = false;
 	virtual void addChange(long _change);
 	double maxTravelTurns = 5.75;
 	long stepsPerRevolution = 5400*2; // halfstepping
