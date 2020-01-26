@@ -9,9 +9,9 @@
 	#include "WProgram.h"
 #endif
 
-#include <LCD.h>
+//#include <NewliquidCrystal/LCD.h>
 #include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#include <NewliquidCrystal/LiquidCrystal_I2C.h>
 #include "ArduinoCircuit.h"
 #include "TemperatureSensor.h"
 #include "Positioner.h"

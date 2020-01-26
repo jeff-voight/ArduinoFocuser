@@ -11,8 +11,8 @@ TemperatureSensor::TemperatureSensor()
 TemperatureSensor::TemperatureSensor(char _pinA)
 {
 	pinA = _pinA;
-	DHT.attach(pinA);
-	DHT.read();
+	//DHT.attach(pinA);
+	DHT.read11(pinA);
 }
 
 TemperatureSensor::~TemperatureSensor()
@@ -21,22 +21,22 @@ TemperatureSensor::~TemperatureSensor()
 
 double TemperatureSensor::getTemperature()
 {
-	DHT.read();
-	return DHT.celcius();
+	DHT.read11(pinA);
+	return DHT.temperature;
 }
 
 double TemperatureSensor::getHumidity()
 {
-	DHT.read();
+	DHT.read11(pinA);
 	return DHT.humidity;
 }
 
 double TemperatureSensor::getDewPoint()
 {
-	return DHT.dewPoint();
+	return DHT.temperature - ((100- DHT.humidity)/5);
 }
 
 void TemperatureSensor::refresh()
 {
-	DHT.read();
+	DHT.read11(pinA);
 }

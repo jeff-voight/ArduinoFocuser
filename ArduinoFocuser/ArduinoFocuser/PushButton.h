@@ -3,11 +3,7 @@
 #ifndef _PUSHBUTTON_h
 #define _PUSHBUTTON_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+#include "arduino.h"
 
 #include "ArduinoCircuit.h"
 

@@ -17,9 +17,9 @@ PushButton::PushButton(uint8_t _buttonPin, uint8_t _LEDPin)
 	LEDPin = _LEDPin;
 	pinMode(buttonPin, INPUT);
 	pinMode(LEDPin, OUTPUT);
-	setLED(true);
-	delay(100);
-	setLED(false);
+	//setLED(true);
+	//delay(10);
+	//setLED(false);
 }
 
 PushButton::~PushButton()

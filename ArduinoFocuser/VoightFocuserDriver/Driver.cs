@@ -82,6 +82,7 @@ namespace ASCOM.VoightFocuser
         /// Private variable to hold the connected state
         /// </summary>
         private bool connectedState;
+        private bool tempComp;
 
         /// <summary>
         /// Private variable to hold an ASCOM Utilities object
@@ -107,14 +108,14 @@ namespace ASCOM.VoightFocuser
             tl = new TraceLogger("", "VoightFocuser");
             ReadProfile(); // Read device configuration from the ASCOM Profile store
 
-            tl.LogMessage("Focuser", "Starting initialisation");
+            tl.LogMessage("Focuser", "Starting initialization");
 
             connectedState = false; // Initialise connected to false
             utilities = new Util(); //Initialise util object
             astroUtilities = new AstroUtils(); // Initialise astro utilities object
             //TODO: Implement your additional construction here
 
-            tl.LogMessage("Focuser", "Completed initialisation");
+            tl.LogMessage("Focuser", "Completed initialization");
         }
 
 
@@ -168,7 +169,7 @@ namespace ASCOM.VoightFocuser
             // Call CommandString and return as soon as it finishes
             this.CommandString(command, raw);
             // or
-            throw new ASCOM.MethodNotImplementedException("CommandBlind");
+            //throw new ASCOM.MethodNotImplementedException("CommandBlind");
             // DO NOT have both these sections!  One or the other
         }
 
@@ -178,7 +179,7 @@ namespace ASCOM.VoightFocuser
             string ret = CommandString(command, raw);
             // TODO decode the return string and return true or false
             // or
-            throw new ASCOM.MethodNotImplementedException("CommandBool");
+            //throw new ASCOM.MethodNotImplementedException("CommandBool");
             // DO NOT have both these sections!  One or the other
         }
 
@@ -226,6 +227,9 @@ namespace ASCOM.VoightFocuser
 
                     objSerial.Speed = ASCOM.Utilities.SerialSpeed.ps115200;
                     objSerial.Connected = true;
+                    
+                    String s = objSerial.ReceiveTerminated("\n");
+                    tl.LogMessage("Starting with ", s);
                 }
                 else
                 {
@@ -294,23 +298,25 @@ namespace ASCOM.VoightFocuser
 
         #region IFocuser Implementation
 
-        private int focuserPosition = 0; // Class level variable to hold the current focuser position
-        private const int focuserSteps = 10000;
+        private int focuserPosition = 10000; // Class level variable to hold the current focuser position
+        private const int focuserSteps = 20000;
 
         public bool Absolute
         {
             get
             {
                 tl.LogMessage("Absolute Get", true.ToString());
-                return false; // This is a relative focuser
+                return true; // This is a absolute focuser
             }
         }
 
         public void Halt()
         {
-            objSerial.Transmit("HALT#");
+            tl.LogMessage("HALT!", true.ToString());
+            objSerial.Transmit("HALT#\n");
             String s = objSerial.ReceiveTerminated("#");
-            s.Replace("#", "");
+            tl.LogMessage("Received message", s);
+            s=s.Replace("#", "");
             tl.LogMessage("Halt", s);
             focuserPosition = int.Parse(s);
         }
@@ -319,11 +325,13 @@ namespace ASCOM.VoightFocuser
         {
             get
             {
+                tl.LogMessage("Testing moving.", true.ToString());
                 objSerial.Transmit("MOVING#");
                 String s = objSerial.ReceiveTerminated("#");
-                s.Replace("#", "");
+                s=s.Replace("#", "").ToLower();
                 tl.LogMessage("IsMoving Get", s);
-                return bool.Parse(s); // This focuser always moves instantaneously so no need for IsMoving ever to be True
+                
+                return bool.Parse(s); 
             }
         }
 
@@ -364,18 +372,25 @@ namespace ASCOM.VoightFocuser
             tl.LogMessage("Move", Position.ToString());
             objSerial.Transmit("MOVE:"+Position+"#");
             String s = objSerial.ReceiveTerminated("#");
-            s.Replace("#", "");
+            s=s.Replace("#", "");
             focuserPosition = Position; // Set the focuser position
+            tl.LogMessage("Moved (to)", Position.ToString());
+
         }
 
         public int Position
         {
             get
             {
+                tl.LogMessage("Retrieving Position.", true.ToString());
                 objSerial.Transmit("POSITION#");
                 String s = objSerial.ReceiveTerminated("#");
-                s.Replace("#", "");
+                tl.LogMessage("Retrived:", s);
+                s=s.Replace("#", "");
+                tl.LogMessage("After replace", s);
                 focuserPosition = int.Parse(s);
+                tl.LogMessage("Position", focuserPosition.ToString());
+
                 return focuserPosition; // Return the focuser position
             }
         }
@@ -394,12 +409,13 @@ namespace ASCOM.VoightFocuser
             get
             {
                 tl.LogMessage("TempComp Get", false.ToString());
-                return false;
+                return tempComp;
             }
             set
             {
-                tl.LogMessage("TempComp Set", "Not implemented");
-                throw new ASCOM.PropertyNotImplementedException("TempComp", false);
+                tempComp = value;
+                tl.LogMessage("TempComp Set", value.ToString());
+                //throw new ASCOM.PropertyNotImplementedException("TempComp", false);
             }
         }
 
@@ -408,7 +424,7 @@ namespace ASCOM.VoightFocuser
             get
             {
                 tl.LogMessage("TempCompAvailable Get", false.ToString());
-                return false; // Temperature compensation is not available in this driver
+                return true; // Temperature compensation is not available in this driver
             }
         }
 
@@ -418,7 +434,7 @@ namespace ASCOM.VoightFocuser
             {
                 objSerial.Transmit("TEMPERATURE#");
                 String s = objSerial.ReceiveTerminated("#");
-                s.Replace("#", "");
+                s=s.Replace("#", "");
                 
                 tl.LogMessage("Temperature Get", s);
                 return double.Parse(s);

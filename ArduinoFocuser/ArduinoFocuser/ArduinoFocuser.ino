@@ -6,12 +6,19 @@
 
 // the setup function runs once when you press reset or power the board
 
+
+
+
+#include <dht.h>
+#include <LiquidCrystal_I2C.h>
+#include <LCD.h>
+#include <I2CIO.h>
+#include <FastIO.h>
+
 #include "StepperMotor.h"
 #include <Wire.h>
 
-#include <LiquidCrystal_I2C.h>
-#include <LiquidCrystal.h>
-#include <LCD.h>
+
 #include "LCDDisplay.h"
 #include "TemperatureSensor.h"
 #include "ArduinoCircuit.h"
@@ -19,23 +26,38 @@
 #include "EncoderPositioner.h"
 #include "Positioner.h"
 
+#define resetButtonPin  4
+#define resetLEDPin  A0
+#define lowLimitButtonPin 5
+#define lowLimitLEDPin A1
+#define	highLimitButtonPin 6
+#define highLimitLEDPin A2
+#define turboButtonPin 7
+#define turboLEDPin A3
+#define encoderPositionerPinA  2
+#define encoderPositionerPinB 3
+#define temperatureSensorPinA 8
+#define lcdSdl  2
+#define lcdSda  1
+#define lcdAddr 0x27
+#define RSTPIN 13
+#define STEPPIN 10
+#define DIRPIN 11
+#define STEPSIZEPIN 12
+
 PushButton reset, lowLimit, highLimit, turbo;
-uint8_t resetButtonPin = 4, resetLEDPin = A0, lowLimitButtonPin = 5, lowLimitLEDPin = A1,
-	highLimitButtonPin = 6, highLimitLEDPin = A2, turboButtonPin = 7, turboLEDPin = A3;
 EncoderPositioner encoderPositioner;
-uint8_t encoderPositionerPinA = 2, encoderPositionerPinB = 3;
-TemperatureSensor temperatureSensor;
-uint8_t temperatureSensorPinA = 8;
-uint8_t lcdSdl = 2, lcdSda = 1;
 LCDDisplay lcd;
-uint8_t lcdAddr = 0x27;
 StepperMotor stepperMotor;
-uint8_t rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
+TemperatureSensor temperatureSensor;
+
 String halt = "HALT", move = "MOVE", isMoving = "MOVING", absolute = "ABSOLUTE", position = "POSITION", temperature="TEMPERATURE"; // ASCOM commands
 char commandDelimiter = '#';
 
 void setup() {
 	Serial.begin(115200);
+	Serial.println("Connected.");
+	Serial.flush();
 	reset = PushButton(resetButtonPin, resetLEDPin);
 	lowLimit = PushButton(lowLimitButtonPin, lowLimitLEDPin);
 	highLimit = PushButton(highLimitButtonPin, highLimitLEDPin);
@@ -43,10 +65,9 @@ void setup() {
 	encoderPositioner = EncoderPositioner(encoderPositionerPinA, encoderPositionerPinB, reset, lowLimit, highLimit, turbo);
 	temperatureSensor = TemperatureSensor(temperatureSensorPinA);
 	lcd = LCDDisplay(lcdAddr, lcdSdl, lcdSda, &encoderPositioner, temperatureSensor);
-	stepperMotor = StepperMotor(rstPin, stepPin, dirPin, stepSizePin, &encoderPositioner);
+	stepperMotor = StepperMotor(RSTPIN, STEPPIN, DIRPIN, STEPSIZEPIN, &encoderPositioner);
 	attachInterrupt(0, interruptA, CHANGE);
 	attachInterrupt(1, interruptB, CHANGE);
-	
 }
 
 // the loop function runs over and over again until power down or reset
@@ -63,7 +84,8 @@ void loop() {
 			cmd = cmdString;
 		}
 		if (cmd == move) {
-			encoderPositioner.moveRelative(param.toInt());
+			encoderPositioner.moveAbsolute(param.toInt());
+			//encoderPositioner.moveRelative(param.toInt());
 			Serial.print(encoderPositioner.getPosition()); Serial.println("#");
 		} else if (cmd == position) {
 			Serial.print(encoderPositioner.getPosition()); Serial.println("#");
@@ -75,8 +97,7 @@ void loop() {
 		} else if (cmd == halt) {
 			encoderPositioner.halt();
 			Serial.print(encoderPositioner.getPosition()); Serial.println("#");
-		}
-				
+		}			
 	}
 	encoderPositioner.refresh();
 	temperatureSensor.refresh();
