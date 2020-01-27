@@ -28,7 +28,7 @@ private:
 	uint8_t pinA = 0, pinB = 0;
 	volatile int oldA = LOW;
     volatile int oldB = LOW;
-	volatile unsigned long lastMicros = micros();
+	volatile long lastMicros = micros();
 	long debouncingTime = 15;
 	PushButton resetButton, lowLimitButton, highLimitButton, turboButton;
 	int turboMultiplier = 10;
