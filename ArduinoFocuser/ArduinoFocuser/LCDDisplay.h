@@ -1,13 +1,14 @@
+
 // LCDDisplay.h
 
 #ifndef _LCDDISPLAY_h
 #define _LCDDISPLAY_h
-//
-//#if defined(ARDUINO) && ARDUINO >= 100
-//	#include "Arduino.h"
-//#else
-//	#include "WProgram.h"
-//#endif
+
+#if defined(ARDUINO) && ARDUINO >= 100
+	#include "Arduino.h"
+#else
+	#include "WProgram.h"
+#endif
 
 
 #include <LiquidCrystal_I2C.h>
@@ -26,13 +27,14 @@ public:
 private:
 	uint8_t sdlPin=2, sdaPin=1;
 	uint8_t addr=0x27;
-	LiquidCrystal_I2C lcd;
+	//LiquidCrystal_I2C lcd;
 	Positioner *positioner;
 	TemperatureSensor temperatureSensor;
 	bool backlight;
-	uint8_t Rw = 0, Rs = 4, d4 = 5, d5 = 6, d6 = 7, backlighPin = 3;
+	uint8_t RwPin = 0, RsPin = 4, d4 = 5, d5 = 6, d6 = 7, backlighPin = 3;
 	uint8_t pol = HIGH;
 	uint8_t width = 20, height = 4;
+  LiquidCrystal_I2C lcd=LiquidCrystal_I2C(0x27,20,4);
 	String padInt(int _theInt, uint8_t _size);
 	String padDouble(double _theDouble, uint8_t _size);
 	String spaces = "                    "; // 20 so far
@@ -43,5 +45,6 @@ private:
 	
 	String currentWarning = noWarning;
 };
+
 
 #endif

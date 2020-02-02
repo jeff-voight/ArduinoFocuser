@@ -1,3 +1,5 @@
+#include <Wire.h>
+
 /*
  Name:		ArduinoFocuser.ino
  Created:	4/12/2016 11:12:14 AM

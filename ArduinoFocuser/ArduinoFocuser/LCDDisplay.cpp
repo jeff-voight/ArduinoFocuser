@@ -1,31 +1,29 @@
-#include <LiquidCrystal_I2C.h>
-
-#include <LiquidCrystal.h>
-
 // 
 // 
 // 
 
 #include "LCDDisplay.h"
 
-LCDDisplay::LCDDisplay():lcd(0x27)
+LCDDisplay::LCDDisplay()//:lcd(0x27)
 {
 }
 
-LCDDisplay::LCDDisplay(uint8_t _addr, uint8_t _sdlPin, uint8_t _sdaPin, Positioner* _positioner, TemperatureSensor _temperatureSensor):lcd(0x27)
+LCDDisplay::LCDDisplay(uint8_t _addr, uint8_t _sdlPin, uint8_t _sdaPin, Positioner* _positioner, TemperatureSensor _temperatureSensor)//:lcd(0x27)
 {
 	addr = _addr;
 	sdlPin = _sdlPin;
 	sdaPin = _sdaPin;
-	lcd = LiquidCrystal_I2C(addr, width, height);
-	lcd.begin(width, height);
+	//lcd = LiquidCrystal_I2C(addr, width, height);
+	//lcd.init();
+	//lcd.begin(width, height);
+  lcd.begin();
 	lcd.clear();
 	lcd.noBacklight();
 	lcd.setCursor(0, 0);
-	lcd.print("ArduinoFocus v:0.1");
+	lcd.print("ArduinoFocus v:0.2");
 	lcd.setCursor(0, 1);
 	lcd.print("By Jeffrey Voight");
-	delay(3000);
+	delay(500);
 	lcd.clear();
 	lcd.setCursor(0, 0);
 	Serial.println(tempLabel);

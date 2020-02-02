@@ -15,7 +15,7 @@ TemperatureSensor::TemperatureSensor()
 TemperatureSensor::TemperatureSensor(char _pinA)
 {
 	pinA = _pinA;
-  dht11 = DHT(pinA, DHTTYPE);
+        //dht11 = DHT(pinA, DHTTYPE);
 	dht11.begin();
 	dht11.readTemperature();
 }
