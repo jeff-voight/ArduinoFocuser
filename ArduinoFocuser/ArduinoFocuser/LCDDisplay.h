@@ -2,16 +2,16 @@
 
 #ifndef _LCDDISPLAY_h
 #define _LCDDISPLAY_h
-
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+//
+//#if defined(ARDUINO) && ARDUINO >= 100
+//	#include "Arduino.h"
+//#else
+//	#include "WProgram.h"
+//#endif
 
 
 #include <LiquidCrystal_I2C.h>
-#include "ArduinoCircuit.h"
+//#include "ArduinoCircuit.h"
 #include "TemperatureSensor.h"
 #include "Positioner.h"
 
@@ -31,7 +31,7 @@ private:
 	TemperatureSensor temperatureSensor;
 	bool backlight;
 	uint8_t Rw = 0, Rs = 4, d4 = 5, d5 = 6, d6 = 7, backlighPin = 3;
-	t_backlighPol pol = POSITIVE;
+	uint8_t pol = HIGH;
 	uint8_t width = 20, height = 4;
 	String padInt(int _theInt, uint8_t _size);
 	String padDouble(double _theDouble, uint8_t _size);
@@ -45,4 +45,3 @@ private:
 };
 
 #endif
-

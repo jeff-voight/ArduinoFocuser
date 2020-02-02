@@ -2,16 +2,16 @@
 
 #ifndef _TEMPERATURESENSOR_h
 #define _TEMPERATURESENSOR_h
-
+#include "DHT.h"
 #if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
+	#include "Arduino.h"
 #else
 	#include "WProgram.h"
 #endif
 
-#include <dht11.h>
 #include "ArduinoCircuit.h"
 
+#define DHTTYPE DHT11
 
 class TemperatureSensor : public ArduinoCircuit {
 public:
@@ -27,9 +27,8 @@ private:
 	double temperature;
 	double humidity;
 	uint8_t pinA;
-	dht11 DHT;
+	DHT dht11;
 
 };
 
 #endif
-
