@@ -4,18 +4,12 @@
 
 #include "LCDDisplay.h"
 
-LCDDisplay::LCDDisplay()//:lcd(0x27)
+LCDDisplay::LCDDisplay()
 {
 }
 
-LCDDisplay::LCDDisplay(uint8_t _addr, uint8_t _sdlPin, uint8_t _sdaPin, Positioner* _positioner, TemperatureSensor _temperatureSensor)//:lcd(0x27)
+LCDDisplay::LCDDisplay(Positioner* _positioner, TemperatureSensor _temperatureSensor)
 {
-	addr = _addr;
-	sdlPin = _sdlPin;
-	sdaPin = _sdaPin;
-	//lcd = LiquidCrystal_I2C(addr, width, height);
-	//lcd.init();
-	//lcd.begin(width, height);
   lcd.begin();
 	lcd.clear();
 	lcd.noBacklight();
@@ -42,13 +36,6 @@ LCDDisplay::LCDDisplay(uint8_t _addr, uint8_t _sdlPin, uint8_t _sdaPin, Position
 	lcd.print(spdLabel);
 	positioner = _positioner;
 	temperatureSensor = _temperatureSensor;
-	//lcd.setCursor(0, 0);
-	//lcd.print("******************");
-	//lcd.print("******************");
-	//lcd.print("******************");
-	//lcd.print("******************");
-
-
 }
 
 LCDDisplay::~LCDDisplay()

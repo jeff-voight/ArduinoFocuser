@@ -20,18 +20,15 @@
 class LCDDisplay : public ArduinoCircuit {
 public:
 	LCDDisplay();
-	LCDDisplay(uint8_t _addr, uint8_t _sdlPin, uint8_t _sdaPin, Positioner* _positioner, TemperatureSensor _temperatureSensor);
+	LCDDisplay(Positioner* _positioner, TemperatureSensor _temperatureSensor);
 	~LCDDisplay();
 	void refresh();
 
 private:
-	uint8_t sdlPin=2, sdaPin=1;
 	uint8_t addr=0x27;
-	//LiquidCrystal_I2C lcd;
 	Positioner *positioner;
 	TemperatureSensor temperatureSensor;
 	bool backlight;
-	uint8_t RwPin = 0, RsPin = 4, d4 = 5, d5 = 6, d6 = 7, backlighPin = 3;
 	uint8_t pol = HIGH;
 	uint8_t width = 20, height = 4;
   LiquidCrystal_I2C lcd=LiquidCrystal_I2C(0x27,20,4);

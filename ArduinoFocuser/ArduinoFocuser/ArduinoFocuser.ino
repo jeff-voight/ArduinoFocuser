@@ -9,7 +9,6 @@
 // the setup function runs once when you press reset or power the board
 
 
-
 #include "StepperMotor.h"
 #include <LiquidCrystal_I2C.h>
 #include "LCDDisplay.h"
@@ -26,9 +25,7 @@ EncoderPositioner encoderPositioner;
 uint8_t encoderPositionerPinA = 2, encoderPositionerPinB = 3;
 TemperatureSensor temperatureSensor;
 uint8_t temperatureSensorPinA = 8;
-uint8_t lcdSdl = 2, lcdSda = 1;
 LCDDisplay lcd;
-uint8_t lcdAddr = 0x27;
 StepperMotor stepperMotor;
 uint8_t rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
 String halt = "HALT", move = "MOVE", isMoving = "MOVING", absolute = "ABSOLUTE",
@@ -43,7 +40,7 @@ void setup() {
 	turbo = PushButton(turboButtonPin, turboLEDPin);
 	encoderPositioner = EncoderPositioner(encoderPositionerPinA, encoderPositionerPinB, reset, lowLimit, highLimit, turbo);
 	temperatureSensor = TemperatureSensor(temperatureSensorPinA);
-	lcd = LCDDisplay(lcdAddr, lcdSdl, lcdSda, &encoderPositioner, temperatureSensor);
+	lcd = LCDDisplay(&encoderPositioner, temperatureSensor);
 	stepperMotor = StepperMotor(rstPin, stepPin, dirPin, stepSizePin, &encoderPositioner);
 	attachInterrupt(0, interruptA, CHANGE);
 	attachInterrupt(1, interruptB, CHANGE);
