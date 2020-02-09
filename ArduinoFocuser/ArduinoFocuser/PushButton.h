@@ -4,7 +4,7 @@
 #define _PUSHBUTTON_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
+	#include "Arduino.h"
 #else
 	#include "WProgram.h"
 #endif
@@ -27,9 +27,8 @@ private:
 	bool pushed = false, held=false, lit=false, blink=false;
 	long lastButtonPushTime = 0;
 	int heldThreshold = 1 * 1000; // 2 Seconds
-	int debounceTime = 50; // 50 milliseconds
+	int debounceTime = 30; // 50 milliseconds
 	int defaultBrightness = 128;
 };
 
 #endif
-
