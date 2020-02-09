@@ -1,3 +1,5 @@
+#include <AccelStepper.h>
+
 // StepperMotor.h
 
 #ifndef _STEPPERMOTOR_h
@@ -24,6 +26,7 @@ public:
 	void refresh();
 	bool isMoving();
 	bool disconnect();
+  AccelStepper stepper;
 
 private:
 
@@ -33,7 +36,6 @@ private:
 	long change;
 	long ms = millis();
 	bool moving = false;
-	long move();
-	long getStepsMovedLastCycle();
+
 };
 #endif
