@@ -83,7 +83,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArduinoCircuit.h" />
     <ClInclude Include="EncoderPositioner.h" />
     <ClInclude Include="LCDDisplay.h" />
     <ClInclude Include="Positioner.h" />
@@ -93,7 +92,6 @@
     <ClInclude Include="__vm\.ArduinoFocuser.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ArduinoCircuit.cpp" />
     <ClCompile Include="EncoderPositioner.cpp" />
     <ClCompile Include="LCDDisplay.cpp" />
     <ClCompile Include="Positioner.cpp" />
