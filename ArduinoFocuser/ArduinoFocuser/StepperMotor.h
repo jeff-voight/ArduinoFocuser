@@ -33,7 +33,7 @@ private:
 	long change;
 	long ms = millis();
 	bool moving = false;
-	long step();
-	long getSteps();
+	long move();
+	long getStepsMovedLastCycle();
 };
 #endif
