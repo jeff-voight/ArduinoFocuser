@@ -1,8 +1,10 @@
+#include <DHT_U.h>
+#include <DHT.h>
+
 // TemperatureSensor.h
 
 #ifndef _TEMPERATURESENSOR_h
 #define _TEMPERATURESENSOR_h
-#include "DHT.h"
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "Arduino.h"
 #else
@@ -16,7 +18,7 @@
 class TemperatureSensor : public ArduinoCircuit {
 public:
 	TemperatureSensor();
-	TemperatureSensor(char _pinA);
+	TemperatureSensor(uint8_t _pinA);
 	~TemperatureSensor();
 	double getTemperature();
 	double getHumidity();

@@ -1,6 +1,3 @@
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
-
 
 // 
 // 
@@ -12,12 +9,10 @@ TemperatureSensor::TemperatureSensor()
 {
 }
 
-TemperatureSensor::TemperatureSensor(char _pinA)
+TemperatureSensor::TemperatureSensor(uint8_t _pinA)
 {
 	pinA = _pinA;
-        //dht11 = DHT(pinA, DHTTYPE);
 	dht11.begin();
-	dht11.readTemperature();
 }
 
 TemperatureSensor::~TemperatureSensor()
@@ -41,5 +36,4 @@ double TemperatureSensor::getDewPoint()
 
 void TemperatureSensor::refresh()
 {
-	dht11.read();
 }

@@ -13,14 +13,8 @@ LCDDisplay::LCDDisplay(Positioner* _positioner, TemperatureSensor _temperatureSe
   lcd.begin();
 	lcd.clear();
 	lcd.noBacklight();
-	lcd.setCursor(0, 0);
-	lcd.print("ArduinoFocus v:0.2");
-	lcd.setCursor(0, 1);
-	lcd.print("By Jeffrey Voight");
-	delay(500);
 	lcd.clear();
 	lcd.setCursor(0, 0);
-	Serial.println(tempLabel);
 	lcd.print(tempLabel);
 	lcd.setCursor(0, 1);
 	lcd.print(humiLabel);
@@ -48,7 +42,7 @@ void LCDDisplay::refresh()
 {
 	
 	int temperature = temperatureSensor.getTemperature();
-	int humidity = temperatureSensor.getHumidity();
+	uint8_t humidity = temperatureSensor.getHumidity();
 	int dewPoint = temperatureSensor.getDewPoint();
 	long position = positioner->getPosition();
 	long change = positioner->getChange();
@@ -63,8 +57,8 @@ void LCDDisplay::refresh()
 	lcd.print(padInt(position, 6));
 	lcd.setCursor(14, 1);
 	lcd.print(padInt(change, 6));
-	lcd.setCursor(4, 3);
-	lcd.print(currentWarning);
+//	lcd.setCursor(4, 3);
+//	lcd.print(currentWarning);
 }
 
 String LCDDisplay::padInt(int _theInt, uint8_t _size)

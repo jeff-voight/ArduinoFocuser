@@ -26,12 +26,12 @@ public:
 
 private:
 	uint8_t pinA = 0, pinB = 0;
-	volatile int oldA = LOW;
-    volatile int oldB = LOW;
+	volatile uint8_t oldA = LOW;
+  volatile uint8_t oldB = LOW;
 	volatile unsigned long lastMicros = micros();
-	long debouncingTime = 15;
+	uint8_t debouncingTime = 15;
 	PushButton resetButton, lowLimitButton, highLimitButton, turboButton;
-	int turboMultiplier = 10;
+	uint8_t turboMultiplier = 10;
 };
 
 #endif

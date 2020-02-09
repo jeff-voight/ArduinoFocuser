@@ -31,16 +31,16 @@ private:
 	bool backlight;
 	uint8_t pol = HIGH;
 	uint8_t width = 20, height = 4;
-  LiquidCrystal_I2C lcd=LiquidCrystal_I2C(0x27,20,4);
+  LiquidCrystal_I2C lcd=LiquidCrystal_I2C(addr,width,height);
 	String padInt(int _theInt, uint8_t _size);
 	String padDouble(double _theDouble, uint8_t _size);
 	String spaces = "                    "; // 20 so far
-	String lowLimitWarnMessage = "Low warning", lowLimitMessage = "Low limit", highLimitWarnMessage = "High warning",
-		highLimitMessage = "High limit", dewWarning = "Dew Point", noWarning = "No warnings";
+//	String lowLimitWarnMessage = "Low warning", lowLimitMessage = "Low limit", highLimitWarnMessage = "High warning",
+//		highLimitMessage = "High limit", dewWarning = "Dew Point", noWarning = "No warnings";
 	String tempLabel = "TEMP", humiLabel = "HUMI", dewLabel = "DEW",
 		posLabel = "POS", chgLabel = "CHG", spdLabel = "SPD", warnLabel = "WARN";
 	
-	String currentWarning = noWarning;
+	//String currentWarning = noWarning;
 };
 
 
