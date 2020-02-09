@@ -4,24 +4,15 @@
 
 #include "LCDDisplay.h"
 
-LCDDisplay::LCDDisplay():lcd(0x27)
+LCDDisplay::LCDDisplay()
 {
 }
 
-LCDDisplay::LCDDisplay(uint8_t _addr, uint8_t _sdlPin, uint8_t _sdaPin, Positioner* _positioner, TemperatureSensor _temperatureSensor):lcd(0x27)
+LCDDisplay::LCDDisplay(Positioner* _positioner, TemperatureSensor _temperatureSensor)
 {
-	addr = _addr;
-	sdlPin = _sdlPin;
-	sdaPin = _sdaPin;
-	lcd = LiquidCrystal_I2C(addr, sdlPin, sdaPin, Rw, Rs, d4, d5, d6, backlighPin, pol);
-	lcd.begin(width, height);
+  lcd.begin();
 	lcd.clear();
-	lcd.setBacklight(LOW);
-	lcd.setCursor(0, 0);
-	lcd.print("ArduinoFocus v:0.1");
-	lcd.setCursor(0, 1);
-	lcd.print("By Jeffrey Voight");
-	delay(100);
+	lcd.noBacklight();
 	lcd.clear();
 	lcd.setCursor(0, 0);
 	lcd.print(tempLabel);
@@ -39,8 +30,6 @@ LCDDisplay::LCDDisplay(uint8_t _addr, uint8_t _sdlPin, uint8_t _sdaPin, Position
 	lcd.print(spdLabel);
 	positioner = _positioner;
 	temperatureSensor = _temperatureSensor;
-
-
 }
 
 LCDDisplay::~LCDDisplay()
@@ -51,11 +40,13 @@ LCDDisplay::~LCDDisplay()
 
 void LCDDisplay::refresh()
 {
+	
 	int temperature = temperatureSensor.getTemperature();
-	int humidity = temperatureSensor.getHumidity();
+	uint8_t humidity = temperatureSensor.getHumidity();
 	int dewPoint = temperatureSensor.getDewPoint();
 	long position = positioner->getPosition();
 	long change = positioner->getChange();
+	
 	lcd.setCursor(4, 0);
 	lcd.print(padInt(temperature, 4));
 	lcd.setCursor(4, 1);
@@ -66,6 +57,8 @@ void LCDDisplay::refresh()
 	lcd.print(padInt(position, 6));
 	lcd.setCursor(14, 1);
 	lcd.print(padInt(change, 6));
+//	lcd.setCursor(4, 3);
+//	lcd.print(currentWarning);
 }
 
 String LCDDisplay::padInt(int _theInt, uint8_t _size)

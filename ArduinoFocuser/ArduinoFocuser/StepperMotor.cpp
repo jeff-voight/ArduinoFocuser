@@ -46,6 +46,12 @@ bool StepperMotor::isMoving()
 	return moving;
 }
 
+bool StepperMotor::disconnect()
+{
+	digitalWrite(rstPin, LOW);
+	return true;
+}
+
 long StepperMotor::getSteps() {
 	int multiplier = 2; // 2 because these are whole steps as opposed to half steps near the ends of the travel
 	if (!moving||abs(change)<slowStepsThreshold) {

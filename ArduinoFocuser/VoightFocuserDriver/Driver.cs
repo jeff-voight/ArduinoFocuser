@@ -233,6 +233,13 @@ namespace ASCOM.VoightFocuser
                 }
                 else
                 {
+                    if (connectedState)
+                    {
+                        objSerial.Transmit("DISCONNECT#");
+                        String s = objSerial.ReceiveTerminated("#");
+                        s.Replace("#", "");
+                        tl.LogMessage("Halt", s);
+                    }
                     connectedState = false;
                     LogMessage("Connected Set", "Disconnecting from port {0}", comPort);
                     objSerial.Connected = false;

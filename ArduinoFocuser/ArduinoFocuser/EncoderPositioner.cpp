@@ -108,7 +108,7 @@ void EncoderPositioner::refresh() {
 
 void EncoderPositioner::interruptA()
 {
-	if ((long)(micros() - lastMicros) < debouncingTime * 1000) {
+	if ((unsigned long)(micros() - lastMicros) < debouncingTime * 1000) {
 		return;
 	}
 	lastMicros = micros();

@@ -4,7 +4,7 @@
 #define _STEPPERMOTOR_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
+	#include "Arduino.h"
 #else
 	#include "WProgram.h"
 #endif
@@ -23,6 +23,7 @@ public:
 	~StepperMotor();
 	void refresh();
 	bool isMoving();
+	bool disconnect();
 
 private:
 
@@ -36,4 +37,3 @@ private:
 	long getSteps();
 };
 #endif
-

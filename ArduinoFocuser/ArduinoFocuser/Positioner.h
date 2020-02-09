@@ -4,7 +4,7 @@
 #define _POSITIONER_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
+	#include "Arduino.h"
 #else
 	#include "WProgram.h"
 #endif
@@ -31,8 +31,9 @@ public:
 	virtual void halt();
 
 protected:
-	volatile long position=10000, change;
-	boolean absolute = true;
+	volatile int32_t position;
+	volatile long change;
+	bool absolute = false;
 	virtual void addChange(long _change);
 	double maxTravelTurns = 5.75;
 	long stepsPerRevolution = 5400*2; // halfstepping
@@ -44,4 +45,3 @@ protected:
 };
 
 #endif
-
