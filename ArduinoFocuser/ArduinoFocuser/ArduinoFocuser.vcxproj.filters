@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ArduinoFocuser.ino" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.ArduinoFocuser.vsarduino.h">
@@ -30,16 +31,13 @@
     <ClInclude Include="PushButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArduinoCircuit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TemperatureSensor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LCDDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StepperMotor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemperatureSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,9 +51,6 @@
     <ClCompile Include="PushButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArduinoCircuit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TemperatureSensor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,5 +60,10 @@
     <ClCompile Include="StepperMotor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="D:\Media\Pictures\2016-04-18_0001\FocuserCircuit.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
