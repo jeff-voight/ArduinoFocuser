@@ -16,12 +16,13 @@ StepperMotor::StepperMotor(uint8_t _rstPin, uint8_t _stepPin, uint8_t _dirPin, u
 	stepSizePin = _stepSizePin;
 	positioner = _positioner;
   stepper = AccelStepper(1, _stepPin, _dirPin);
-  stepper.setMaxSpeed(1000);
-  stepper.setAcceleration(30);
+  stepper.setMaxSpeed(8000);
+  stepper.setAcceleration(1000);
   
 	pinMode(rstPin, OUTPUT);
 	digitalWrite(rstPin, HIGH);
 	pinMode(stepSizePin, OUTPUT);
+  pinMode(stepSizePin, LOW);
 }
 
 StepperMotor::~StepperMotor()
@@ -30,15 +31,13 @@ StepperMotor::~StepperMotor()
 
 void StepperMotor::refresh()
 {
-  stepper.run();
-  long currentPosition = stepper.currentPosition();
 	change = positioner->getChange();
+  long currentPosition = stepper.currentPosition()+change;
 	if (change != 0) {
-		stepper.moveTo(currentPosition+change);
+		stepper.runToNewPosition(currentPosition);
 	}
-
+  positioner->setChange(0);
   positioner->setPosition(currentPosition);
-
 }
 
 bool StepperMotor::isMoving()
