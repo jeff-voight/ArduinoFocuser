@@ -8,7 +8,7 @@ StepperMotor::StepperMotor()
 {
 }
 
-StepperMotor::StepperMotor(uint8_t _rstPin, uint8_t _stepPin, uint8_t _dirPin, uint8_t _stepSizePin, Positioner * _positioner)
+StepperMotor::StepperMotor(short _rstPin, short _stepPin, short _dirPin, short _stepSizePin, Positioner * _positioner)
 {
 	rstPin = _rstPin;
 	stepPin = _stepPin;

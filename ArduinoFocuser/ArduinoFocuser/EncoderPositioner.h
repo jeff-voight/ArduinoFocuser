@@ -3,11 +3,6 @@
 #ifndef _ENCODERPOSITIONER_h
 #define _ENCODERPOSITIONER_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
-#endif
 
 #include "Positioner.h"
 #include "PushButton.h"
@@ -25,7 +20,7 @@ public:
 	void interruptB();
 
 private:
-	uint8_t pinA = 0, pinB = 0;
+	short pinA = 0, pinB = 0;
 	volatile int oldA = LOW;
     volatile int oldB = LOW;
 	volatile long lastMicros = micros();
@@ -35,4 +30,3 @@ private:
 };
 
 #endif
-

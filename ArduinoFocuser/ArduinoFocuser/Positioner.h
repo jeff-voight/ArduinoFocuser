@@ -3,11 +3,6 @@
 #ifndef _POSITIONER_h
 #define _POSITIONER_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
-#endif
 #include "ArduinoCircuit.h"
 
 class Positioner: public ArduinoCircuit {
@@ -32,7 +27,7 @@ public:
 
 protected:
 	volatile long position, change;
-	boolean absolute = false;
+	bool absolute = false;
 	virtual void addChange(long _change);
 	double maxTravelTurns = 5.75;
 	long stepsPerRevolution = 5400*2; // halfstepping
@@ -44,4 +39,3 @@ protected:
 };
 
 #endif
-

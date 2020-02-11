@@ -1,15 +1,13 @@
+#include <DHT.h>
+#include <DHT_U.h>
+
 // TemperatureSensor.h
 
 #ifndef _TEMPERATURESENSOR_h
 #define _TEMPERATURESENSOR_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
-#else
-	#include "WProgram.h"
-#endif
 
-#include <dht11.h>
+
 #include "ArduinoCircuit.h"
 
 
@@ -26,10 +24,9 @@ public:
 private:
 	double temperature;
 	double humidity;
-	uint8_t pinA;
+	short pinA;
 	dht11 DHT;
 
 };
 
 #endif
-

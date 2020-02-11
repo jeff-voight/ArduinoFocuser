@@ -1,3 +1,5 @@
+#include <LiquidCrystal.h>
+
 /*
  Name:		ArduinoFocuser.ino
  Created:	4/12/2016 11:12:14 AM
@@ -11,7 +13,7 @@
 
 #include <LiquidCrystal_I2C.h>
 #include <LiquidCrystal.h>
-#include <LCD.h>
+//#include <LCD.h>
 #include "LCDDisplay.h"
 #include "TemperatureSensor.h"
 #include "ArduinoCircuit.h"
@@ -20,17 +22,17 @@
 #include "Positioner.h"
 
 PushButton reset, lowLimit, highLimit, turbo;
-uint8_t resetButtonPin = 4, resetLEDPin = A0, lowLimitButtonPin = 5, lowLimitLEDPin = A1,
+short resetButtonPin = 4, resetLEDPin = A0, lowLimitButtonPin = 5, lowLimitLEDPin = A1,
 	highLimitButtonPin = 6, highLimitLEDPin = A2, turboButtonPin = 7, turboLEDPin = A3;
 EncoderPositioner encoderPositioner;
-uint8_t encoderPositionerPinA = 2, encoderPositionerPinB = 3;
+short encoderPositionerPinA = 2, encoderPositionerPinB = 3;
 TemperatureSensor temperatureSensor;
-uint8_t temperatureSensorPinA = 8;
-uint8_t lcdSdl = 2, lcdSda = 1;
+short temperatureSensorPinA = 8;
+short lcdSdl = 2, lcdSda = 1;
 LCDDisplay lcd;
-uint8_t lcdAddr = 0x27;
+short lcdAddr = 0x27;
 StepperMotor stepperMotor;
-uint8_t rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
+short rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
 String halt = "HALT", move = "MOVE", isMoving = "MOVING", absolute = "ABSOLUTE",
 	position = "POSITION", temperature="TEMPERATURE", disconnect="DISCONNECT"; // ASCOM commands
 char commandDelimiter = '#';
