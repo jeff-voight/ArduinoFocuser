@@ -14,17 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MCU_Module:Arduino_UNO_R3 A1
-U 1 1 5E42D953
-P 2100 3400
-F 0 "A1" H 2100 4581 50  0000 C CNN
-F 1 "Arduino_UNO_R3" H 2100 4490 50  0000 C CNN
-F 2 "Module:Arduino_UNO_R3" H 2100 3400 50  0001 C CIN
-F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 2100 3400 50  0001 C CNN
-	1    2100 3400
-	1    0    0    -1  
-$EndComp
-$Comp
 L Driver_Motor:Pololu_Breakout_DRV8825 DRV1
 U 1 1 5E42E952
 P 4650 4300
@@ -52,7 +41,7 @@ U 1 1 5E42FC2F
 P 5900 4200
 F 0 "M1" V 5868 4012 50  0000 R CNN
 F 1 "Stepper_Motor_bipolar" V 5777 4012 50  0000 R CNN
-F 2 "" H 5910 4190 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-4_P5.08mm" H 5910 4190 50  0001 C CNN
 F 3 "http://www.infineon.com/dgdl/Application-Note-TLE8110EE_driving_UniPolarStepperMotor_V1.1.pdf?fileId=db3a30431be39b97011be5d0aa0a00b0" H 5910 4190 50  0001 C CNN
 	1    5900 4200
 	0    -1   -1   0   
@@ -63,7 +52,7 @@ U 1 1 5E430D3D
 P 8800 1600
 F 0 "SW1" V 8846 1370 50  0000 R CNN
 F 1 "Rotary_Encoder_Switch" V 8755 1370 50  0000 R CNN
-F 2 "" H 8650 1760 50  0001 C CNN
+F 2 "Rotary_Encoder:RotaryEncoder_Alps_EC11E-Switch_Vertical_H20mm" H 8650 1760 50  0001 C CNN
 F 3 "~" H 8800 1860 50  0001 C CNN
 	1    8800 1600
 	0    -1   -1   0   
@@ -74,7 +63,7 @@ U 1 1 5E4322DD
 P 9000 2350
 F 0 "R3" V 9207 2350 50  0000 C CNN
 F 1 "10k" V 9116 2350 50  0000 C CNN
-F 2 "" V 8930 2350 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 8930 2350 50  0001 C CNN
 F 3 "~" H 9000 2350 50  0001 C CNN
 	1    9000 2350
 	0    -1   -1   0   
@@ -85,7 +74,7 @@ U 1 1 5E433403
 P 9500 2150
 F 0 "C3" H 9615 2196 50  0000 L CNN
 F 1 ".01uF" H 9615 2105 50  0000 L CNN
-F 2 "" H 9538 2000 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W2.0mm_P2.50mm" H 9538 2000 50  0001 C CNN
 F 3 "~" H 9500 2150 50  0001 C CNN
 	1    9500 2150
 	1    0    0    -1  
@@ -96,7 +85,7 @@ U 1 1 5E43407D
 P 8100 2100
 F 0 "C2" H 7900 2150 50  0000 L CNN
 F 1 ".01uF" H 7800 2050 50  0000 L CNN
-F 2 "" H 8138 1950 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W2.0mm_P2.50mm" H 8138 1950 50  0001 C CNN
 F 3 "~" H 8100 2100 50  0001 C CNN
 	1    8100 2100
 	1    0    0    -1  
@@ -107,7 +96,7 @@ U 1 1 5E4344D5
 P 8600 2350
 F 0 "R2" V 8393 2350 50  0000 C CNN
 F 1 "10k" V 8484 2350 50  0000 C CNN
-F 2 "" V 8530 2350 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 8530 2350 50  0001 C CNN
 F 3 "~" H 8600 2350 50  0001 C CNN
 	1    8600 2350
 	0    1    1    0   
@@ -118,7 +107,7 @@ U 1 1 5E4346E3
 P 8250 2350
 F 0 "R1" H 8400 2300 50  0000 R CNN
 F 1 "10k" H 8450 2400 50  0000 R CNN
-F 2 "" V 8180 2350 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 8180 2350 50  0001 C CNN
 F 3 "~" H 8250 2350 50  0001 C CNN
 	1    8250 2350
 	0    -1   -1   0   
@@ -129,7 +118,7 @@ U 1 1 5E4347D7
 P 9350 2350
 F 0 "R4" V 9143 2350 50  0000 C CNN
 F 1 "10k" V 9234 2350 50  0000 C CNN
-F 2 "" V 9280 2350 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 9280 2350 50  0001 C CNN
 F 3 "~" H 9350 2350 50  0001 C CNN
 	1    9350 2350
 	0    1    1    0   
@@ -140,7 +129,7 @@ U 1 1 5E43491A
 P 5100 3500
 F 0 "C1" H 5215 3546 50  0000 L CNN
 F 1 ".01uF" H 5215 3455 50  0000 L CNN
-F 2 "" H 5138 3350 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D3.0mm_W2.0mm_P2.50mm" H 5138 3350 50  0001 C CNN
 F 3 "~" H 5100 3500 50  0001 C CNN
 	1    5100 3500
 	1    0    0    -1  
@@ -321,7 +310,7 @@ Wire Wire Line
 	2200 4500 2200 4650
 Wire Wire Line
 	2200 4650 2100 4650
-Text GLabel 2700 3900 2    50   Input ~ 0
+Text GLabel 1350 3600 0    50   Input ~ 0
 DHTIO
 Wire Wire Line
 	2600 3900 2700 3900
@@ -333,18 +322,12 @@ Wire Wire Line
 	1350 3300 1600 3300
 Wire Wire Line
 	1350 3400 1600 3400
-Text GLabel 2850 3400 2    50   Input ~ 0
+Text GLabel 2700 3900 2    50   Input ~ 0
 M0
-Text GLabel 2850 3500 2    50   Input ~ 0
+Text GLabel 2700 3800 2    50   Input ~ 0
 M1
-Text GLabel 2850 3600 2    50   Input ~ 0
+Text GLabel 2700 3700 2    50   Input ~ 0
 M2
-Wire Wire Line
-	2600 3400 2850 3400
-Wire Wire Line
-	2600 3500 2850 3500
-Wire Wire Line
-	2600 3600 2850 3600
 $Comp
 L power:GND #PWR0101
 U 1 1 5E480034
@@ -397,12 +380,8 @@ Wire Wire Line
 NoConn ~ 2600 2800
 NoConn ~ 2600 3000
 NoConn ~ 2600 3200
-NoConn ~ 2600 3700
-NoConn ~ 2600 3800
 NoConn ~ 2600 4100
 NoConn ~ 2600 4200
-NoConn ~ 1600 3600
-NoConn ~ 1600 3700
 NoConn ~ 1600 3800
 NoConn ~ 1600 3900
 NoConn ~ 1600 4000
@@ -415,12 +394,30 @@ Text GLabel 8900 1200 2    50   Input ~ 0
 GND
 Wire Wire Line
 	8900 1200 8900 1300
-Text GLabel 1350 3500 0    50   Input ~ 0
-S1
-Wire Wire Line
-	1350 3500 1600 3500
 NoConn ~ 1600 4100
 NoConn ~ 4250 3900
 NoConn ~ 1600 2800
 NoConn ~ 1600 2900
+Wire Wire Line
+	2600 3700 2700 3700
+Wire Wire Line
+	2600 3800 2700 3800
+$Comp
+L MCU_Module:Arduino_UNO_R3 A1
+U 1 1 5E42D953
+P 2100 3400
+F 0 "A1" H 2100 4581 50  0000 C CNN
+F 1 "Arduino_UNO_R3" H 2100 4490 50  0000 C CNN
+F 2 "Module:Arduino_UNO_R3" H 2100 3400 50  0001 C CIN
+F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 2100 3400 50  0001 C CNN
+	1    2100 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 3600 1600 3600
+Text GLabel 1350 3700 0    50   Input ~ 0
+S1
+Wire Wire Line
+	1350 3700 1600 3700
+NoConn ~ 1600 3500
 $EndSCHEMATC
