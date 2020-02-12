@@ -1,14 +1,11 @@
+
 // LCDDisplay.h
 
 #ifndef _LCDDISPLAY_h
 #define _LCDDISPLAY_h
 
-
-
-//#include <LCD.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-#include "ArduinoCircuit.h"
 #include "TemperatureSensor.h"
 #include "Positioner.h"
 

@@ -6,7 +6,7 @@
 
 Positioner::Positioner()
 {
-	position = 0;
+	position = 10000;
 	change = 0;
 }
 

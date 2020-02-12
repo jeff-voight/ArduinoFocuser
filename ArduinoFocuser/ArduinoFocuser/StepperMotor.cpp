@@ -30,14 +30,14 @@ void StepperMotor::refresh()
 {
 	change = positioner->getChange();
 	if (change == 0) {
-		digitalWrite(stepPin, 0); // in case halt was called
+		digitalWrite(stepPin, LOW); // in case halt was called
 		moving = false;
 	}
-	long moved = getSteps(); // How many steps did we take last cycle?
+	long moved = getStepsMovedLastCycle(); // How many steps did we take last cycle?
 	//Serial.print("We moved "); Serial.print(moved); Serial.println(" steps in the last cycle.");
 	positioner->adjustMoved(moved); // update the positioner so it can display it
 	
-	long steps=step(); // Tell the motor whether to move, move slow, or stop
+	long steps=move(); // Tell the motor whether to move, move slow, or stop
 	positioner->adjustMoved(steps); // if slow stepping, this tells us how many steps cycled
 }
 
@@ -52,7 +52,7 @@ bool StepperMotor::disconnect()
 	return true;
 }
 
-long StepperMotor::getSteps() {
+long StepperMotor::getStepsMovedLastCycle() {
 	int multiplier = 2; // 2 because these are whole steps as opposed to half steps near the ends of the travel
 	if (!moving||abs(change)<slowStepsThreshold) {
 		return 0;
@@ -66,9 +66,9 @@ long StepperMotor::getSteps() {
 
 }
 
-long StepperMotor::step()
+long StepperMotor::move()
 {
-	int dirMultiplier = 1;
+	uint8_t dirMultiplier = 1;
 	long stepsRemaining = abs(change);
 	if (change == 0) {
 		digitalWrite(stepPin, 0); // halt if something needs it.
@@ -87,21 +87,12 @@ long StepperMotor::step()
 		digitalWrite(stepSizePin, HIGH); // Halfstep mode
 		long timeRemaining = stepsRemaining*2 / stepsPerMS;
 		analogWrite(stepPin, 127);
-		delay(timeRemaining);
+		delay(timeRemaining); // Take advantage of the PWM on the step pin to perform the stepping for a short period
 		digitalWrite(stepPin, 0);
-		//int lesserVal = (stepsRemaining < 10?stepsRemaining:10);
-		//analogWrite(stepPin, 0); // Stop the motor if it's moving
-		//digitalWrite(stepSizePin, HIGH); // Go halfstep for final adjustment. Probably just for show.
-		//for (int i = 0; i < lesserVal && change!=0; i++) {
-		//	digitalWrite(stepPin, HIGH);
-		//	delay(1);
-		//	digitalWrite(stepPin, LOW);
-		//	delay(1);
-		//}
 		moving = false;
 		return stepsRemaining*dirMultiplier;
 	} else {
-		digitalWrite(stepSizePin, LOW);
+		digitalWrite(stepSizePin, LOW); // Fullstep mode
 		ms = millis();
 		analogWrite(stepPin, 127);
 		moving = true;

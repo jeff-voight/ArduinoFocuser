@@ -3,7 +3,6 @@
 #ifndef _ENCODERPOSITIONER_h
 #define _ENCODERPOSITIONER_h
 
-
 #include "Positioner.h"
 #include "PushButton.h"
 
@@ -26,7 +25,7 @@ private:
 	volatile long lastMicros = micros();
 	long debouncingTime = 15;
 	PushButton resetButton, lowLimitButton, highLimitButton, turboButton;
-	int turboMultiplier = 10;
+	uint8_t turboMultiplier = 10;
 };
 
 #endif

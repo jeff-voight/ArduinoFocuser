@@ -83,24 +83,24 @@ void EncoderPositioner::refresh() {
 	highLimitButton.refresh();
 	turboButton.refresh();
 	if (resetButton.isPushed()) {// && turboButton.isPushed()) {
-		Serial.println("HALT!");
+		//Serial.println("HALT!");
 		halt();
 	}
 	if (resetButton.isHeld()) {
 		if (lowLimitButton.isPushed()) {
-			Serial.println("Resetting low limit.");
+			//Serial.println("Resetting low limit.");
 			setLowLimit(getPosition());
 		}
 		if (highLimitButton.isPushed()) {
-			Serial.println("Resetting high limit.");
+			//Serial.println("Resetting high limit.");
 			setHighLimit(getPosition());
 		}
 		if (lowLimitButton.isHeld()) {
-			Serial.println("Clearing low limit.");
+			//Serial.println("Clearing low limit.");
 			setLowLimit(-2147483647);
 		}
 		if (highLimitButton.isHeld()) {
-			Serial.println("Clearing high limit.");
+			//Serial.println("Clearing high limit.");
 			setHighLimit(2147483647);
 		}
 	}

@@ -68,7 +68,7 @@ namespace ASCOM.VoightFocuser
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 31);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Construct your driver\'s setup dialog here.";
+            this.label1.Text = "VoightFocus Driver Setup";
             // 
             // picASCOM
             // 

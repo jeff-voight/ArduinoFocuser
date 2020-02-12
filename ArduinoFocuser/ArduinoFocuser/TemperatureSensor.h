@@ -1,20 +1,18 @@
-#include <DHT.h>
-#include <DHT_U.h>
+
 
 // TemperatureSensor.h
 
 #ifndef _TEMPERATURESENSOR_h
 #define _TEMPERATURESENSOR_h
+#include <DHT.h>
+#include <DHT_U.h>
 
-
-
-#include "ArduinoCircuit.h"
-
+#define DHTTYPE DHT11
 
 class TemperatureSensor : public ArduinoCircuit {
 public:
 	TemperatureSensor();
-	TemperatureSensor(char _pinA);
+	TemperatureSensor(uint8_t _pinA);
 	~TemperatureSensor();
 	double getTemperature();
 	double getHumidity();
@@ -26,7 +24,6 @@ private:
 	double humidity;
 	short pinA;
 	dht11 DHT;
-
 };
 
 #endif

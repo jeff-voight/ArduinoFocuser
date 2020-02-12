@@ -6,6 +6,10 @@
 #include "ArduinoCircuit.h"
 #include "Positioner.h"
 
+#define stepsPerRevolution 5400
+#define processorStepsPerSecond 490
+#define slowStepsThreshold 500
+
 class StepperMotor: public ArduinoCircuit {
 public:
 	StepperMotor();
@@ -16,7 +20,7 @@ public:
 	bool disconnect();
 
 private:
-	uint16_t stepsPerRevolution = 5400, processorStepsPerSecond = 490;
+
 	double stepsPerMS = 0.0 + processorStepsPerSecond / 1000.0;
 	long slowStepsThreshold = 500;
 	short rstPin, stepPin, dirPin, stepSizePin;
@@ -24,8 +28,7 @@ private:
 	long change;
 	long ms = millis();
 	bool moving = false;
-	long step();
-	long getSteps();
-
+	long move();
+	long getStepsMovedLastCycle();
 };
 #endif
