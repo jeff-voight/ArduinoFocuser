@@ -3,11 +3,7 @@
 #ifndef _POSITIONER_h
 #define _POSITIONER_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "Arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+
 #include "ArduinoCircuit.h"
 
 class Positioner: public ArduinoCircuit {
@@ -31,8 +27,7 @@ public:
 	virtual void halt();
 
 protected:
-	volatile int32_t position;
-	volatile long change;
+	volatile long position, change;
 	bool absolute = false;
 	virtual void addChange(long _change);
 	double maxTravelTurns = 5.75;

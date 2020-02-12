@@ -10,16 +10,12 @@ PushButton::PushButton()
 	LEDPin = -1;
 }
 
-PushButton::PushButton(uint8_t _buttonPin, uint8_t _LEDPin)
+PushButton::PushButton(short _buttonPin, short _LEDPin)
 {
-	Serial.begin(115200);
 	buttonPin = _buttonPin;
 	LEDPin = _LEDPin;
 	pinMode(buttonPin, INPUT);
 	pinMode(LEDPin, OUTPUT);
-	//setLED(true);
-	//delay(10);
-	//setLED(false);
 }
 
 PushButton::~PushButton()
