@@ -8,7 +8,7 @@ LCDDisplay::LCDDisplay()
 {
 }
 
-LCDDisplay::LCDDisplay(Positioner* _positioner, TemperatureSensor _temperatureSensor)
+LCDDisplay::LCDDisplay(short _addr, short _sdlPin, short _sdaPin, Positioner* _positioner, TemperatureSensor _temperatureSensor):lcd(0x27)
 {
   lcd.begin();
 	lcd.clear();
@@ -40,13 +40,11 @@ LCDDisplay::~LCDDisplay()
 
 void LCDDisplay::refresh()
 {
-	
 	int temperature = temperatureSensor.getTemperature();
 	//uint8_t humidity = temperatureSensor.getHumidity();
 	//int dewPoint = temperatureSensor.getDewPoint();
 	long position = positioner->getPosition();
 	long change = positioner->getChange();
-	
 	lcd.setCursor(4, 0);
 	lcd.print(padInt(temperature, 4));
 	//lcd.setCursor(4, 1);
@@ -57,18 +55,16 @@ void LCDDisplay::refresh()
 	lcd.print(padInt(position, 6));
 	lcd.setCursor(14, 1);
 	lcd.print(padInt(change, 6));
-//	lcd.setCursor(4, 3);
-//	lcd.print(currentWarning);
 }
 
-String LCDDisplay::padInt(int _theInt, uint8_t _size)
+String LCDDisplay::padInt(int _theInt, short _size)
 {
 	String tempString = spaces + _theInt;
 	tempString = tempString.substring(tempString.length() - _size);
 	return tempString;
 }
 
-String LCDDisplay::padDouble(double _theDouble, uint8_t _size)
+String LCDDisplay::padDouble(double _theDouble, short _size)
 {
 	int tempInt = round(_theDouble * 10);
 	double tempDouble = 0.0 + tempInt / 10;
