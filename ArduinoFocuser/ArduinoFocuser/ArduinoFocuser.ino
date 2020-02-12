@@ -1,4 +1,4 @@
-#include <Wire.h>
+#include <LiquidCrystal.h>
 
 /*
   Name:		ArduinoFocuser.ino
@@ -9,16 +9,22 @@
 // the setup function runs once when you press reset or power the board
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 03cdf8017e282394ac3c66f675fc6916d1ac39d8
 #include "StepperMotor.h"
 #include <Wire.h>
 
 #include <LiquidCrystal_I2C.h>
 #include <LiquidCrystal.h>
+<<<<<<< HEAD
 #include <LCD.h>
 =======
 
 #include "StepperMotor.h"
 >>>>>>> 6584177ef95c811bfca0f5024842edff6fdf28e3
+=======
+>>>>>>> 03cdf8017e282394ac3c66f675fc6916d1ac39d8
 #include "LCDDisplay.h"
 #include "TemperatureSensor.h"
 #include "ArduinoCircuit.h"
@@ -27,24 +33,18 @@
 #include "Positioner.h"
 
 PushButton reset, lowLimit, highLimit, turbo;
-uint8_t resetButtonPin = 4, resetLEDPin = A0, lowLimitButtonPin = 5, lowLimitLEDPin = A1,
-        highLimitButtonPin = 6, highLimitLEDPin = A2, turboButtonPin = 7, turboLEDPin = A3;
-
-
+short resetButtonPin = 4, resetLEDPin = A0, lowLimitButtonPin = 5, lowLimitLEDPin = A1,
+	highLimitButtonPin = 6, highLimitLEDPin = A2, turboButtonPin = 7, turboLEDPin = A3;
 EncoderPositioner encoderPositioner;
-uint8_t encoderPositionerPinA = 2, encoderPositionerPinB = 3;
-
-
+short encoderPositionerPinA = 2, encoderPositionerPinB = 3;
 TemperatureSensor temperatureSensor;
-uint8_t temperatureSensorPinA = 8;
-
-
+short temperatureSensorPinA = 8;
+short lcdSdl = 2, lcdSda = 1;
 LCDDisplay lcd;
-
+short lcdAddr = 0x27;
 StepperMotor stepperMotor;
-uint8_t rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
+short rstPin = 13, stepPin = 10, dirPin = 11, stepSizePin = 12;
 
-// ASCOM/INDI commands
 String halt = "HALT", move = "MOVE", isMoving = "MOVING", absolute = "ABSOLUTE",
        position = "POSITION", temperature = "TEMPERATURE", disconnect = "DISCONNECT";
 char commandDelimiter = '#';
@@ -55,13 +55,11 @@ char commandDelimiter = '#';
 */
 void setup() {
   Serial.begin(115200);
-  Serial.println("\nv1\n");
+  Serial.println("StupidDog.v1.1");
   reset = PushButton(resetButtonPin, resetLEDPin);
-  lowLimit = PushButton(lowLimitButtonPin, lowLimitLEDPin);
-  highLimit = PushButton(highLimitButtonPin, highLimitLEDPin);
   turbo = PushButton(turboButtonPin, turboLEDPin);
 
-  encoderPositioner = EncoderPositioner(encoderPositionerPinA, encoderPositionerPinB, reset, lowLimit, highLimit, turbo);
+  encoderPositioner = EncoderPositioner(encoderPositionerPinA, encoderPositionerPinB, reset, turbo);
   attachInterrupt(0, interruptA, CHANGE);
   attachInterrupt(1, interruptB, CHANGE);
 
@@ -118,14 +116,9 @@ void loop() {
 
   encoderPositioner.refresh();
 
-  if(suppressTempCounter--<=0){
-    temperatureSensor.refresh();
-    suppressTempCounter=100;
-  }
-  
   if(suppressLCDCounter--<=0){
     lcd.refresh();
-    suppressLCDCounter=50;
+    suppressLCDCounter=255;
   }
 
   stepperMotor.refresh();
@@ -137,5 +130,5 @@ void interruptA() {
 }
 
 void interruptB() {
-  encoderPositioner.interruptB();
+	encoderPositioner.interruptB();
 }
