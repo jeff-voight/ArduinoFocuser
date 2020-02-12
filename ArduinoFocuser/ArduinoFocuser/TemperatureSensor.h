@@ -21,13 +21,9 @@ public:
 	TemperatureSensor(uint8_t _pinA);
 	~TemperatureSensor();
 	double getTemperature();
-	double getHumidity();
-	double getDewPoint();
-	void refresh();
 
 private:
 	double temperature;
-	double humidity;
 	uint8_t pinA;
 	DHT dht11 = DHT(8, DHTTYPE);
 

@@ -46,13 +46,11 @@ char commandDelimiter = '#';
 */
 void setup() {
   Serial.begin(115200);
-  Serial.println("\nv1\n");
+  Serial.println("StupidDog.v1.1");
   reset = PushButton(resetButtonPin, resetLEDPin);
-  lowLimit = PushButton(lowLimitButtonPin, lowLimitLEDPin);
-  highLimit = PushButton(highLimitButtonPin, highLimitLEDPin);
   turbo = PushButton(turboButtonPin, turboLEDPin);
 
-  encoderPositioner = EncoderPositioner(encoderPositionerPinA, encoderPositionerPinB, reset, lowLimit, highLimit, turbo);
+  encoderPositioner = EncoderPositioner(encoderPositionerPinA, encoderPositionerPinB, reset, turbo);
   attachInterrupt(0, interruptA, CHANGE);
   attachInterrupt(1, interruptB, CHANGE);
 
@@ -109,14 +107,9 @@ void loop() {
 
   encoderPositioner.refresh();
 
-  if(suppressTempCounter--<=0){
-    temperatureSensor.refresh();
-    suppressTempCounter=100;
-  }
-  
   if(suppressLCDCounter--<=0){
     lcd.refresh();
-    suppressLCDCounter=50;
+    suppressLCDCounter=255;
   }
 
   stepperMotor.refresh();

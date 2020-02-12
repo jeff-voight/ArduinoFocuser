@@ -12,7 +12,6 @@
 
 
 #include <LiquidCrystal_I2C.h>
-//#include "ArduinoCircuit.h"
 #include "TemperatureSensor.h"
 #include "Positioner.h"
 
@@ -35,12 +34,9 @@ private:
 	String padInt(int _theInt, uint8_t _size);
 	String padDouble(double _theDouble, uint8_t _size);
 	String spaces = "                    "; // 20 so far
-//	String lowLimitWarnMessage = "Low warning", lowLimitMessage = "Low limit", highLimitWarnMessage = "High warning",
-//		highLimitMessage = "High limit", dewWarning = "Dew Point", noWarning = "No warnings";
-	String tempLabel = "TEMP", humiLabel = "HUMI", dewLabel = "DEW",
-		posLabel = "POS", chgLabel = "CHG", spdLabel = "SPD", warnLabel = "WARN";
+
+	String tempLabel = "TEMP", posLabel = "POS", chgLabel = "CHG", spdLabel = "SPD", warnLabel = "WARN";
 	
-	//String currentWarning = noWarning;
 };
 
 

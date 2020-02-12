@@ -13,7 +13,6 @@ class ArduinoCircuit {
 public:
 	ArduinoCircuit();
 	virtual ~ArduinoCircuit();
-	virtual void refresh() = 0;
 };
 
 #endif

@@ -15,8 +15,6 @@
 #include "Positioner.h"
 
 #define stepsPerRevolution 5400
-#define processorStepsPerSecond 490
-#define slowStepsThreshold 500
 
 class StepperMotor: public ArduinoCircuit {
 public:
@@ -30,7 +28,6 @@ public:
 
 private:
 
-	double stepsPerMS = 0.0 + processorStepsPerSecond / 1000.0;
 	uint8_t rstPin, stepPin, dirPin, stepSizePin;
 	Positioner* positioner;
 	long change;

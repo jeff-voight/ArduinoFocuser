@@ -11,43 +11,18 @@ EncoderPositioner::EncoderPositioner()
 	
 }
 
-EncoderPositioner::EncoderPositioner(char _pinA, char _pinB, PushButton _resetButton, PushButton _lowLimitButton, PushButton _highLimitButton, PushButton _turboButton)
+EncoderPositioner::EncoderPositioner(char _pinA, char _pinB, PushButton _resetButton, PushButton _turboButton)
 {
 	pinA = _pinA;
 	pinB = _pinB;
 	resetButton = _resetButton;
-	lowLimitButton = _lowLimitButton;
-	highLimitButton = _highLimitButton;
 	turboButton = _turboButton;
 	pinMode(pinA, INPUT);
 	pinMode(pinB, INPUT);
+  oldA = digitalRead(pinA);
+  oldB = digitalRead(pinB);
 }
 
-EncoderPositioner::EncoderPositioner(char _pinA, char _pinB, int _turboMultiplier, PushButton _resetButton, PushButton _lowLimitButton, PushButton _highLimitButton, PushButton _turboButton)
-{
-	pinA = _pinA;
-	pinB = _pinB;
-	turboMultiplier = _turboMultiplier;
-	resetButton = _resetButton;
-	lowLimitButton = _lowLimitButton;
-	highLimitButton = _highLimitButton;
-	turboButton = _turboButton;
-	pinMode(pinA, INPUT);
-	pinMode(pinB, INPUT);
-	oldA = digitalRead(pinA);
-	oldB = digitalRead(pinB);
-}
-
-EncoderPositioner::EncoderPositioner(char _pinA, char _pinB)
-{
-	pinA = _pinA;
-	pinB = _pinB;
-	pinMode(pinA, INPUT_PULLUP);
-	pinMode(pinB, INPUT_PULLUP);
-	oldA = digitalRead(pinA);
-	oldB = digitalRead(pinB);
-	
-}
 
 EncoderPositioner::~EncoderPositioner()
 {
@@ -55,12 +30,8 @@ EncoderPositioner::~EncoderPositioner()
 
 void EncoderPositioner::increment(long _change)
 {
-	int uberMultiplier = 1;
-	if (highLimitButton.isPushed()) {
-		uberMultiplier = 10;
-	}
 	if (turboButton.isPushed()) {
-		addChange(_change*turboMultiplier*uberMultiplier);
+		addChange(_change*turboMultiplier);
 	} else {
 		addChange(_change);
 	}
@@ -68,24 +39,28 @@ void EncoderPositioner::increment(long _change)
 
 
 void EncoderPositioner::refresh() {
+  
 	if (highLimit-limitThreshold < position) {
 		highLimitButton.setLED(true);
 	} else {
 		highLimitButton.setLED(false);
 	}
+ 
 	if (lowLimit+limitThreshold > position) {
 		lowLimitButton.setLED(true);
 	} else {
 		lowLimitButton.setLED(false);
 	}
+ 
 	resetButton.refresh();
 	lowLimitButton.refresh();
 	highLimitButton.refresh();
 	turboButton.refresh();
-	if (resetButton.isPushed()) {// && turboButton.isPushed()) {
-		//Serial.println("HALT!");
+  
+	if (resetButton.isPushed()) {
 		halt();
 	}
+ 
 	if (resetButton.isHeld()) {
 		if (lowLimitButton.isPushed()) {
 			//Serial.println("Resetting low limit.");
