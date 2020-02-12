@@ -25,12 +25,6 @@ long Positioner::getPosition()
 	return position;
 }
 
-void Positioner::moveAbsolute(long _position)
-{
-	long change = _position - getPosition();
-	moveRelative(change);
-}
-
 void Positioner::moveRelative(long _change)
 {
 	addChange(_change);	
@@ -70,18 +64,14 @@ long Positioner::getHighLimit()
 {
 	return highLimit;
 }
-void Positioner::adjustMoved(long _moved) {
-	change -= _moved;
-	position += _moved;
-}
-
-void Positioner::refresh() {
-
-}
 
 double Positioner::getStepSize()
 {
 	return stepSize;
+}
+
+void Positioner::setChange(long _change){
+  change=_change;
 }
 
 void Positioner::halt() {

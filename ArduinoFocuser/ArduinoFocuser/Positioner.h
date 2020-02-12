@@ -16,13 +16,12 @@ public:
 	void moveRelative(long _change);
 	virtual void increment(long _change);
 	virtual long getChange();
+  virtual void setChange(long _change);
 	void setLimitThreshold(long _limitThreshold);
 	void setLowLimit(long _lowLimit);
 	void setHighLimit(long _highLimit);
 	long getLowLimit();
 	long getHighLimit();
-	void adjustMoved(long _moved);
-	virtual void refresh() ;
 	double getStepSize();
 	virtual void halt();
 

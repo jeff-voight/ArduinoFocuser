@@ -9,8 +9,7 @@
 class EncoderPositioner : public Positioner {
 public:
 	EncoderPositioner();
-	EncoderPositioner(char _pinA, char _pinB, PushButton _resetButton, PushButton _lowLimitButton, PushButton _highLimitButton, PushButton _turboButton);
-	EncoderPositioner(char _pinA, char _pinB, int _turboMultiplier, PushButton _resetButton, PushButton _lowLimitButton, PushButton _highLimitButton, PushButton _turboButton);
+	EncoderPositioner(char _pinA, char _pinB, PushButton _resetButton, PushButton _turboButton);
 	EncoderPositioner(char _pinA, char _pinB);
 	~EncoderPositioner();
 	virtual void increment(long _change) override;
@@ -25,7 +24,7 @@ private:
 	volatile long lastMicros = micros();
 	long debouncingTime = 15;
 	PushButton resetButton, lowLimitButton, highLimitButton, turboButton;
-	uint8_t turboMultiplier = 10;
+	uint8_t turboMultiplier = 100;
 };
 
 #endif

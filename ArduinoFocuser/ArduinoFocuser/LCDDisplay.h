@@ -30,11 +30,9 @@ private:
 	String padInt(int _theInt, short _size);
 	String padDouble(double _theDouble, short _size);
 	String spaces = "                    "; // 20 so far
-	String tempLabel = "Temp:", humiLabel = "Humi:", dewLabel = "Dew:",
-		posLabel = "Pos:", chgLabel = "Chg:", spdLabel = "Spd:", warnLabel = "Warn:";
-	String lowLimitWarnMessage = "Low warning", lowLimitMessage = "Low limit", highLimitWarnMessage = "High warning",
-		highLimitMessage = "High limit", dewWarning = "Dew Point", noWarning="No warnings";
-	String currentWarning = noWarning;
+
+	String tempLabel = "TEMP", posLabel = "POS", chgLabel = "CHG", spdLabel = "SPD", warnLabel = "WARN";
+	
 };
 
 #endif
