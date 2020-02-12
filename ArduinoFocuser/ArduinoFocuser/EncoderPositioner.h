@@ -4,7 +4,7 @@
 #define _ENCODERPOSITIONER_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
+	#include "Arduino.h"
 #else
 	#include "WProgram.h"
 #endif
@@ -26,13 +26,19 @@ public:
 
 private:
 	uint8_t pinA = 0, pinB = 0;
+<<<<<<< HEAD
 	volatile int oldA = LOW;
     volatile int oldB = LOW;
 	volatile long lastMicros = micros();
 	long debouncingTime = 15;
+=======
+	volatile uint8_t oldA = LOW;
+  volatile uint8_t oldB = LOW;
+	volatile unsigned long lastMicros = micros();
+	uint8_t debouncingTime = 15;
+>>>>>>> 6584177ef95c811bfca0f5024842edff6fdf28e3
 	PushButton resetButton, lowLimitButton, highLimitButton, turboButton;
-	int turboMultiplier = 10;
+	uint8_t turboMultiplier = 10;
 };
 
 #endif
-

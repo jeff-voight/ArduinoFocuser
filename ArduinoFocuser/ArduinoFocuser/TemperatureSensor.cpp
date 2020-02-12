@@ -1,3 +1,4 @@
+
 // 
 // 
 // 
@@ -8,11 +9,10 @@ TemperatureSensor::TemperatureSensor()
 {
 }
 
-TemperatureSensor::TemperatureSensor(char _pinA)
+TemperatureSensor::TemperatureSensor(uint8_t _pinA)
 {
 	pinA = _pinA;
-	DHT.attach(pinA);
-	DHT.read();
+	dht11.begin();
 }
 
 TemperatureSensor::~TemperatureSensor()
@@ -21,22 +21,19 @@ TemperatureSensor::~TemperatureSensor()
 
 double TemperatureSensor::getTemperature()
 {
-	DHT.read();
-	return DHT.celcius();
+	return dht11.readTemperature();
 }
 
 double TemperatureSensor::getHumidity()
 {
-	DHT.read();
-	return DHT.humidity;
+	return dht11.readHumidity();
 }
 
 double TemperatureSensor::getDewPoint()
 {
-	return DHT.dewPoint();
+	return dht11.computeHeatIndex(getTemperature(), getHumidity(), false);
 }
 
 void TemperatureSensor::refresh()
 {
-	DHT.read();
 }
