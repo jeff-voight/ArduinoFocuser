@@ -1,17 +1,11 @@
-#include <DHT_U.h>
-#include <DHT.h>
+
 
 // TemperatureSensor.h
 
 #ifndef _TEMPERATURESENSOR_h
 #define _TEMPERATURESENSOR_h
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "Arduino.h"
-#else
-	#include "WProgram.h"
-#endif
-
-#include "ArduinoCircuit.h"
+#include <DHT.h>
+#include <DHT_U.h>
 
 #define DHTTYPE DHT11
 
@@ -26,7 +20,6 @@ private:
 	double temperature;
 	uint8_t pinA;
 	DHT dht11 = DHT(8, DHTTYPE);
-
 };
 
 #endif

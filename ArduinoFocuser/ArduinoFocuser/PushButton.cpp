@@ -10,7 +10,7 @@ PushButton::PushButton()
 	LEDPin = -1;
 }
 
-PushButton::PushButton(uint8_t _buttonPin, uint8_t _LEDPin)
+PushButton::PushButton(short _buttonPin, short _LEDPin)
 {
 	buttonPin = _buttonPin;
 	LEDPin = _LEDPin;
