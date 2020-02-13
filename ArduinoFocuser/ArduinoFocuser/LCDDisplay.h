@@ -3,7 +3,7 @@
 
 #ifndef _LCDDISPLAY_h
 #define _LCDDISPLAY_h
-
+#include "Arduino.h"
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include "TemperatureSensor.h"
@@ -24,7 +24,7 @@ private:
 	Positioner *positioner;
 	TemperatureSensor temperatureSensor;
 	bool backlight;
-	short Rw = 0, Rs = 4, d4 = 5, d5 = 6, d6 = 7, backlighPin = 3;
+	short Rw1 = 0, Rs1 = 4, d4 = 5, d5 = 6, d6 = 7, backlighPin = 3;
 	t_backlighPol pol = POSITIVE;
 	short width = 20, height = 4;
 	String padInt(int _theInt, short _size);

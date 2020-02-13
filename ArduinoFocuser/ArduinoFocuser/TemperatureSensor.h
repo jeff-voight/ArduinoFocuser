@@ -9,7 +9,7 @@
 
 #define DHTTYPE DHT11
 
-class TemperatureSensor : public ArduinoCircuit {
+class TemperatureSensor  {
 public:
 	TemperatureSensor();
 	TemperatureSensor(uint8_t _pinA);
