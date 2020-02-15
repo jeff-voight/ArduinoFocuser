@@ -7,7 +7,6 @@
 */
 
 // the setup function runs once when you press reset or power the board
-#include <LCD.h>
 #include "StepperMotor.h"
 #include "LCDDisplay.h"
 #include "TemperatureSensor.h"
