@@ -27,6 +27,14 @@ LCDDisplay::LCDDisplay(Positioner* _positioner, TemperatureSensor _temperatureSe
 	lcd.print(spdLabel);
 	positioner = _positioner;
 	temperatureSensor = _temperatureSensor;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 6584177ef95c811bfca0f5024842edff6fdf28e3
+=======
+>>>>>>> 03cdf8017e282394ac3c66f675fc6916d1ac39d8
 }
 
 LCDDisplay::~LCDDisplay()
@@ -47,6 +55,14 @@ void LCDDisplay::refresh()
 	lcd.print(padInt(position, 6));
 	lcd.setCursor(14, 1);
 	lcd.print(padInt(change, 6));
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+//	lcd.setCursor(4, 3);
+//	lcd.print(currentWarning);
+>>>>>>> 6584177ef95c811bfca0f5024842edff6fdf28e3
+=======
+>>>>>>> 03cdf8017e282394ac3c66f675fc6916d1ac39d8
 }
 
 String LCDDisplay::padInt(uint8_t _theInt, uint8_t _size)

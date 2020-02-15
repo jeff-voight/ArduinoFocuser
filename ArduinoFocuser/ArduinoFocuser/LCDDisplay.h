@@ -28,6 +28,7 @@ private:
 	String padInt(uint8_t _theInt, uint8_t _size);
 	String padDouble(double _theDouble, uint8_t _size);
 	String spaces = "                    "; // 20 so far
+
 	String tempLabel = "TEMP", posLabel = "POS", chgLabel = "CHG", spdLabel = "SPD", warnLabel = "WARN";
 	
 };
