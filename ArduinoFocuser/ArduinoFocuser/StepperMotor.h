@@ -5,12 +5,11 @@
 #ifndef _STEPPERMOTOR_h
 #define _STEPPERMOTOR_h
 
-#include "ArduinoCircuit.h"
 #include "Positioner.h"
 
 #define stepsPerRevolution 5400
 
-class StepperMotor: public ArduinoCircuit {
+class StepperMotor {
 public:
 	StepperMotor();
 	StepperMotor(short _rstPin, short _stepPin, short _dirPin, short _stepSizePin, Positioner* _positioner);

@@ -23,7 +23,3 @@ double TemperatureSensor::getTemperature()
 {
 	return dht11.readTemperature();
 }
-
-//void TemperatureSensor::refresh()
-//{
-//}

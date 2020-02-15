@@ -2,10 +2,9 @@
 
 #ifndef _PUSHBUTTON_h
 #define _PUSHBUTTON_h
+#include "Arduino.h"
 
-#include "ArduinoCircuit.h"
-
-class PushButton : public ArduinoCircuit {
+class PushButton {
 public:
 	PushButton();
 	PushButton(short _buttonPin, short _LEDPin);
