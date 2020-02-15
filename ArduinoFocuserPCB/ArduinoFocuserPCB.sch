@@ -310,14 +310,14 @@ Wire Wire Line
 	2200 4500 2200 4650
 Wire Wire Line
 	2200 4650 2100 4650
-Text GLabel 1350 3600 0    50   Input ~ 0
+Text GLabel 1350 4100 0    50   Input ~ 0
 DHTIO
 Wire Wire Line
 	2600 3900 2700 3900
 Text GLabel 1350 3300 0    50   Input ~ 0
-ENCA
+ENCA_A
 Text GLabel 1350 3400 0    50   Input ~ 0
-ENCB
+ENCB_A
 Wire Wire Line
 	1350 3300 1600 3300
 Wire Wire Line
@@ -394,7 +394,6 @@ Text GLabel 8900 1200 2    50   Input ~ 0
 GND
 Wire Wire Line
 	8900 1200 8900 1300
-NoConn ~ 1600 4100
 NoConn ~ 4250 3900
 NoConn ~ 1600 2800
 NoConn ~ 1600 2900
@@ -413,11 +412,69 @@ F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 2100 3400 50  0001 C CNN
 	1    2100 3400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1350 3600 1600 3600
 Text GLabel 1350 3700 0    50   Input ~ 0
-S1
+S1_A
 Wire Wire Line
 	1350 3700 1600 3700
 NoConn ~ 1600 3500
+$Comp
+L dk_Logic-Gates-and-Inverters:SN74HC14N U2
+U 1 1 5E47ABFB
+P 4800 1950
+F 0 "U2" H 4800 2753 60  0000 C CNN
+F 1 "SN74HC14N" H 4800 2647 60  0000 C CNN
+F 2 "digikey-footprints:DIP-14_W3mm" H 5000 2150 60  0001 L CNN
+F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fsn74hc14" H 5000 2250 60  0001 L CNN
+F 4 "296-1577-5-ND" H 5000 2350 60  0001 L CNN "Digi-Key_PN"
+F 5 "SN74HC14N" H 5000 2450 60  0001 L CNN "MPN"
+F 6 "Integrated Circuits (ICs)" H 5000 2550 60  0001 L CNN "Category"
+F 7 "Logic - Gates and Inverters" H 5000 2650 60  0001 L CNN "Family"
+F 8 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fsn74hc14" H 5000 2750 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/texas-instruments/SN74HC14N/296-1577-5-ND/277223" H 5000 2850 60  0001 L CNN "DK_Detail_Page"
+F 10 "IC INVERTER SCHMITT 6CH 14DIP" H 5000 2950 60  0001 L CNN "Description"
+F 11 "Texas Instruments" H 5000 3050 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 5000 3150 60  0001 L CNN "Status"
+	1    4800 1950
+	1    0    0    -1  
+$EndComp
+Text GLabel 4350 1650 0    50   Input ~ 0
+S1
+Text GLabel 4350 1850 0    50   Input ~ 0
+ENCA
+Text GLabel 4350 1750 0    50   Input ~ 0
+ENCB
+Text GLabel 5250 1650 2    50   Input ~ 0
+S1_A
+Text GLabel 5250 1750 2    50   Input ~ 0
+ENCB_A
+Text GLabel 5250 1850 2    50   Input ~ 0
+ENCB_A
+Wire Wire Line
+	5100 1650 5250 1650
+Wire Wire Line
+	5100 1750 5250 1750
+Wire Wire Line
+	5100 1850 5250 1850
+Wire Wire Line
+	4350 1650 4500 1650
+Wire Wire Line
+	4350 1750 4500 1750
+Wire Wire Line
+	4350 1850 4500 1850
+Wire Wire Line
+	1350 4100 1600 4100
+NoConn ~ 1600 3600
+NoConn ~ 2600 3400
+NoConn ~ 2600 3500
+NoConn ~ 2600 3600
+Text GLabel 4750 1300 0    50   Input ~ 0
+VCC
+Wire Wire Line
+	4800 1350 4800 1300
+Wire Wire Line
+	4800 1300 4750 1300
+Text GLabel 4800 2500 0    50   Input ~ 0
+GND
+Wire Wire Line
+	4800 2500 4800 2450
 $EndSCHEMATC
