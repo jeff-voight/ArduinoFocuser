@@ -36,10 +36,10 @@ F 3 "http://akizukidenshi.com/download/ds/aosong/DHT11.pdf" H 8700 5050 50  0001
 	0    1    1    0   
 $EndComp
 $Comp
-L Motor:Stepper_Motor_bipolar M1
+L Motor:Stepper_Motor_bipolar Motor1
 U 1 1 5E42FC2F
 P 5900 4200
-F 0 "M1" V 5868 4012 50  0000 R CNN
+F 0 "Motor1" V 5868 4012 50  0000 R CNN
 F 1 "Stepper_Motor_bipolar" V 5777 4012 50  0000 R CNN
 F 2 "TerminalBlock:TerminalBlock_bornier-4_P5.08mm" H 5910 4190 50  0001 C CNN
 F 3 "http://www.infineon.com/dgdl/Application-Note-TLE8110EE_driving_UniPolarStepperMotor_V1.1.pdf?fileId=db3a30431be39b97011be5d0aa0a00b0" H 5910 4190 50  0001 C CNN
@@ -448,7 +448,7 @@ S1_A
 Text GLabel 5250 1750 2    50   Input ~ 0
 ENCB_A
 Text GLabel 5250 1850 2    50   Input ~ 0
-ENCB_A
+ENCA_A
 Wire Wire Line
 	5100 1650 5250 1650
 Wire Wire Line
@@ -477,4 +477,10 @@ Text GLabel 4800 2500 0    50   Input ~ 0
 GND
 Wire Wire Line
 	4800 2500 4800 2450
+NoConn ~ 5100 1950
+NoConn ~ 5100 2050
+NoConn ~ 5100 2150
+NoConn ~ 4500 2150
+NoConn ~ 4500 2050
+NoConn ~ 4500 1950
 $EndSCHEMATC
