@@ -28,7 +28,7 @@ protected:
 	bool absolute = false;
 	virtual void addChange(long _change);
 	double maxTravelTurns = 5.75;
-	long stepsPerRevolution = 5400*2; // halfstepping
+	long stepsPerRevolution = 5400; 
 	double travelDistancePerTurn = 23.82;
 	double stepSize = travelDistancePerTurn / stepsPerRevolution;
 	long lowLimit = -1 * (stepsPerRevolution*maxTravelTurns / 2), // 5 turns of a 200*27 step motor

@@ -16,8 +16,8 @@ StepperMotor::StepperMotor(short _rstPin, short _stepPin, short _dirPin, short _
 	stepSizePin = _stepSizePin;
 	positioner = _positioner;
   stepper = AccelStepper(1, _stepPin, _dirPin);
-  stepper.setMaxSpeed(8000);
-  stepper.setAcceleration(1000);
+  stepper.setMaxSpeed(800);
+  stepper.setAcceleration(200);
   
 	pinMode(rstPin, OUTPUT);
 	digitalWrite(rstPin, HIGH);
