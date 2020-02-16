@@ -80,9 +80,9 @@ void Positioner::halt() {
 
 void Positioner::addChange(long _change) {
 	change += _change;
-	if (position + change < lowLimit) {
-		change = lowLimit - position;
-	} else if (position + change > highLimit) {
-		change = highLimit - position;
-	}
+//	if (position + change < lowLimit) {
+//		change = lowLimit - position;
+//	} else if (position + change > highLimit) {
+//		change = highLimit - position;
+//	}
 }
